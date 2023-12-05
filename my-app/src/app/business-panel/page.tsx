@@ -16,7 +16,7 @@ export default function Home() {
 
 
 const Top = (
-  <div>Titulo</div>
+  <div className='mx-auto text-2xl'>Negócios</div>
 );
 
 const Middle = (
@@ -24,8 +24,8 @@ const Middle = (
 );
 
 const Bottom = (
-  <div>
-    <Button className='flex-1'>Teste</Button>
-    <Button className='flex-1'>Teste</Button>
+  <div className='mx-auto flex w-full'>
+    <Button className='flex-2 m-2'>Teste</Button>
+    <Button className='flex-2 m-2'>Teste</Button>
   </div>
 );
