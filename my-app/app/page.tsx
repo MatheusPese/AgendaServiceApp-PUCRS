@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -12,9 +11,9 @@ export default function Home() {
 
     // Redirecionar com base no status de login
     if (isLoggedIn) {
-      router.push('/business-panel'); // Redirecionar para o painel de negócios se estiver autenticado
+      router.push('/pages/business-panel'); // Redirecionar para o painel de negócios se estiver autenticado
     } else {
-      router.push('/login-page'); // Redirecionar para a página de login se não estiver autenticado
+      router.push('/pages//login-page'); // Redirecionar para a página de login se não estiver autenticado
     }
   }, []);
 }
