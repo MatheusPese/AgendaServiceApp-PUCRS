@@ -24,8 +24,7 @@ const Middle = (
 );
 
 const Bottom = (
-  <div className='mx-auto flex w-full'>
-    <Button className='flex-2 m-2'>Teste</Button>
-    <Button className='flex-2 m-2'>Teste</Button>
+  <div className='mx-auto flex w-full justify-between'>
+    <Button className='flex-2 m-2'>Menu</Button>
   </div>
 );
