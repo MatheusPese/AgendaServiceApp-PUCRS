@@ -1,8 +1,6 @@
 'use client'
 import { useState } from 'react';
-import PageTemplate from '@/app/components/page-template';
-import Button from '@/app/components/button';
-import FloatingMenu from '@/app/components/floating-menu';
+
 
 export default function Home() {
   const [menuVisible, setMenuVisible] = useState(false);
