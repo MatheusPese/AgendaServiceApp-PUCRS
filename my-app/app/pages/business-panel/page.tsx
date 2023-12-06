@@ -1,5 +1,10 @@
 'use client'
+
 import { useState } from 'react';
+import PageTemplate from '@/app/components/page-template/page-template';
+import FloatingMenu from '@/app/components/floating-menu/floating-menu';
+import BusinessItem from './business-item/business-item';
+import Button from '@/app/components/button/button';
 
 
 export default function Home() {
@@ -10,14 +15,22 @@ export default function Home() {
   };
 
   const Top = (
-    <div className='mx-auto text-2xl'>Negócios</div>
+    <div className='m-auto'>Negócios</div>
   );
 
+  var business = ["Salão de Beleza 1", "Salão de Beleza 2", "Salão de Beleza 3"];
+
   const Middle = (
-    menuVisible && (
-      <FloatingMenu />
-    )
+    <div id="list" className="space-y-2">
+      {business.map((item, index) => (
+        <BusinessItem>
+          {item}
+        </BusinessItem>
+      ))}
+      {menuVisible && <FloatingMenu />}
+    </div>
   );
+
 
   const Bottom = (
     <div className='mx-auto flex w-full justify-between'>
