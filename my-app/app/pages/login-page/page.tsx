@@ -3,8 +3,6 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import "./login-page.css"
 
-// Extracted styles as constants
-const formContainerStyles = 'm-auto pt-10 pb-11 px-7 bg-black bg-opacity-20 rounded-lg';
 
 const LoginButton: React.FC = () => {
   return (
@@ -56,7 +54,7 @@ export default function LoginPage() {
 
   return (
     <main className={`flex min-h-screen flex-col items-center justify-between`}>
-      <div className={formContainerStyles}>
+      <div className='form-container'>
         <div className='text-white mb-5'>Conectar</div>
         <form onSubmit={handleSubmit}>
           <IdInput />
