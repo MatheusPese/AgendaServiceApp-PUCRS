@@ -3,13 +3,13 @@ import Button from './button'
 
 interface PageTemplateProps {
   children: {
-  Top?: ReactNode;
-  Middle?: ReactNode;
-  Bottom?: ReactNode;
-};
+    Top?: ReactNode;
+    Middle?: ReactNode;
+    Bottom?: ReactNode;
+  };
 
 }
-const PageTemplate: React.FC<PageTemplateProps> = ({children}) => {
+const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   const { Top, Middle, Bottom } = children;
   return (
     <main className="bg-gradient-to-bl from-blue-400 via-teal-600 to-teal-300 flex min-h-screen flex-col items-center justify-between">

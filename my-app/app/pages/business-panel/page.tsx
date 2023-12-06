@@ -1,5 +1,7 @@
-import PageTemplate from '../components/page-template'
-import Button from '../components/button'
+'use client'
+
+import PageTemplate from '@/app/components/page-template'
+import Button from '@/app/components/button'
 
 export default function Home() {
   return (
@@ -14,6 +16,9 @@ export default function Home() {
   )
 }
 
+const MenuClick = () => {
+  console.log('Button clicked!'); // Replace this with your desired logic
+};
 
 const Top = (
   <div className='mx-auto text-2xl'>Negócios</div>
@@ -25,6 +30,6 @@ const Middle = (
 
 const Bottom = (
   <div className='mx-auto flex w-full justify-between'>
-    <Button className='flex-2 m-2'>Menu</Button>
+    <Button className='flex-2 m-2' onClick={MenuClick}>Menu</Button>
   </div>
 );

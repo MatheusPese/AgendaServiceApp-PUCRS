@@ -55,7 +55,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    router.push('/business-panel');
+    router.push('/pages/business-panel');
   };
 
   return (
