@@ -3,8 +3,6 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import "./login-page.css"
 
-// Extracted styles as constants
-const backgroundStyles = 'bg-gradient-to-bl from-blue-400 via-teal-600 to-teal-300';
 const formContainerStyles = 'm-auto pt-10 pb-11 px-7 bg-black bg-opacity-20 rounded-lg';
 
 const LoginButton: React.FC = () => {
