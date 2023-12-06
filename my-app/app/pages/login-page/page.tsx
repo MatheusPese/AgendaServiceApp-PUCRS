@@ -54,7 +54,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className={`${backgroundStyles} flex min-h-screen flex-col items-center justify-between`}>
+    <main className={`flex min-h-screen flex-col items-center justify-between`}>
       <div className={formContainerStyles}>
         <div className='text-white mb-5'>Conectar</div>
         <form onSubmit={handleSubmit}>
