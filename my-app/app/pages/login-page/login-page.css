@@ -1,0 +1,7 @@
+.button-styles {
+    display: block;
+    padding: 0.5rem 2rem;
+    background-color: rgba(34, 34, 34, 0.3);
+    color: white;
+    margin: 0 auto;
+  }
