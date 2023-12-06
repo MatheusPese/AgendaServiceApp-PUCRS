@@ -4,10 +4,8 @@ import { useRouter } from 'next/navigation';
 import "./login-page.css"
 
 // Extracted styles as constants
-const inputStyles = 'block w-full rounded-md border-0 py-1.5 mb-5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6';
 const backgroundStyles = 'bg-gradient-to-bl from-blue-400 via-teal-600 to-teal-300';
 const formContainerStyles = 'm-auto pt-10 pb-11 px-7 bg-black bg-opacity-20 rounded-lg';
-const connectTextStyles = 'text-white mb-5';
 
 const LoginButton: React.FC = () => {
   return (
@@ -30,7 +28,7 @@ const IdInput: React.FC = () => {
       autoComplete='phone-or-mail'
       required
       placeholder='E-mail ou Telefone'
-      className={inputStyles}
+      className='input-styles'
     />
   );
 };
@@ -44,7 +42,7 @@ const PasswordInput: React.FC = () => {
       autoComplete='password'
       required
       placeholder='Senha'
-      className={inputStyles}
+      className='input-styles'
     />
   );
 };
@@ -60,7 +58,7 @@ export default function LoginPage() {
   return (
     <main className={`${backgroundStyles} flex min-h-screen flex-col items-center justify-between`}>
       <div className={formContainerStyles}>
-        <div className={connectTextStyles}>Conectar</div>
+        <div className='text-white mb-5'>Conectar</div>
         <form onSubmit={handleSubmit}>
           <IdInput />
           <PasswordInput />
