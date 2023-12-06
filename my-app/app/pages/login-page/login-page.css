@@ -6,7 +6,7 @@
   margin: 0 auto;
 }
 
-.input-styles {
+.login-input {
   color: #000000;
   display: block;
   width: 100%;
@@ -23,10 +23,10 @@
   outline: none;
 }
 
-.input-styles::placeholder {
+.login-input::placeholder {
 }
 
-.input-styles:focus {
+.login-input:focus {
   border-width: 2px; /* Equivalent to focus:ring-2 */
   border-style: inset; /* Equivalent to focus:ring-inset */
   border-color: #4f46e5; /* Equivalent to focus:ring-indigo-600 */

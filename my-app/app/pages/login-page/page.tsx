@@ -27,7 +27,7 @@ const IdInput: React.FC = () => {
       autoComplete='phone-or-mail'
       required
       placeholder='E-mail ou Telefone'
-      className='input-styles'
+      className='login-input'
     />
   );
 };
@@ -41,7 +41,7 @@ const PasswordInput: React.FC = () => {
       autoComplete='password'
       required
       placeholder='Senha'
-      className='input-styles'
+      className='login-input'
     />
   );
 };
