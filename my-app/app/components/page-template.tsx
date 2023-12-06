@@ -16,7 +16,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
       <div className="flex top-0 w-full h-30 bg-transparent text-white p-4 ">
         {Top}
       </div>
-      <div className='flex-1 w-full bg-gray-900 opacity-50 text-white p-4'>
+      <div className='flex-1 w-full bg-gray-900 bg-opacity-50 text-white p-4'>
         {Middle}
       </div>
       <div className="flex bottom-0 w-full bg-transparent text-white p-4 justify-between items-center">
