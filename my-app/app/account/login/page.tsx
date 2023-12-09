@@ -65,7 +65,7 @@ export default function LoginPage() {
     const isValidPassword = false
 
     if (isValidPassword) {
-      router.push('/pages/business-panel');
+      router.push('/business-panel');
     }
     else{
       alert("Login ou Senha invalidos.")
