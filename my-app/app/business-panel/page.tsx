@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react';
-import PageTemplate from '@/app/components/page-template/page-template';
-import FloatingMenu from '@/app/components/floating-menu/floating-menu';
-import BusinessItem from './business-item/business-item';
-import Button from '@/app/components/button/button';
+import PageTemplate from '@/components/PageTemplate';
+import FloatingMenu from '@/components/FloatingMenu';
+import BusinessItem from '@/components/business-panel/BusinessItem';
+import Button from '@/components/Button';
 
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
 
   const Bottom = (
     <div className='mx-auto flex w-full justify-between'>
-      <Button className='flex-2 m-2' onClick={MenuClick}>
+      <Button className='flex-2' onClick={MenuClick}>
         Menu
       </Button>
     </div>
