@@ -1,24 +1,33 @@
 'use client'
 import { useState } from "react";
 
-import Button from "@/components/Button";
-import PageTemplate from "@/components/PageTemplate";
-import FloatingMenu from "@/components/FloatingMenu";
-import InfoCard from "@/components/InfoCard";
+import Button from "@/app/_components/Button";
+import PageTemplate from "@/app/_components/PageTemplate";
+import FloatingMenu from "@/app/_components/FloatingMenu";
+import InfoCard from "@/app/_components/InfoCard";
 
-interface ProfileProps {
-    editName: () => void;
-    editEmail: () => void;
-    editPhone: () => void;
-    editPassword: () => void;
 
-}
-
-const Profile: React.FC<ProfileProps> = ({editEmail, editName, editPhone, editPassword}) => {
+function Profile()  {
     const [menuVisible, setMenuVisible] = useState(false);
 
     const MenuClick = () => {
         setMenuVisible(!menuVisible);
+    };
+
+    const editName = () => {
+        // Implement logic for editing name
+    };
+
+    const editEmail = () => {
+        // Implement logic for editing email
+    };
+
+    const editPhone = () => {
+        // Implement logic for editing phone
+    };
+
+    const editPassword = () => {
+        // Implement logic for editing password
     };
 
 

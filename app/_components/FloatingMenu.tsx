@@ -7,18 +7,16 @@ interface FloatingMenuProps {
 }
 
 
-
-
 const FloatingMenu: React.FC<FloatingMenuProps> = () => {
     const router = useRouter();
     const Menu1 = () =>{
-        router.push('/pages/business-panel');
+        router.push('/business-panel');
     };
     const Menu2 = () =>{
-        router.push('/pages/profile');
+        router.push('/account/profile');
     };
     const Menu3 = () =>{
-        router.push('/pages/login-page');
+        router.push('/account/login');
     };
 
 

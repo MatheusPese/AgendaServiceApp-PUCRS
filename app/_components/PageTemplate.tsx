@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import './page-template.css';
+import './PageTemplate.css';
 
 interface PageTemplateProps {
   children: {

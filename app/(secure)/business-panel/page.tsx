@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react';
-import PageTemplate from '@/components/PageTemplate';
-import FloatingMenu from '@/components/FloatingMenu';
-import BusinessItem from '@/components/business-panel/BusinessItem';
-import Button from '@/components/Button';
+import PageTemplate from '@/app/_components/PageTemplate';
+import FloatingMenu from '@/app/_components/FloatingMenu';
+import BusinessItem from '@/app/_components/business-panel/BusinessItem';
+import Button from '@/app/_components/Button';
 
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
   const Middle = (
     <div id="list" className="space-y-2">
       {business.map((item, index) => (
-        <BusinessItem>
+        <BusinessItem key={index}>
           {item}
         </BusinessItem>
       ))}
