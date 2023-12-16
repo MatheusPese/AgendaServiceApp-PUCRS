@@ -18,8 +18,16 @@
   }
 }
 
-body {
+html{
+  height: 100%;
+  overflow: hidden;
+}
+html body {
   color: rgb(var(--foreground-rgb));
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background: linear-gradient(
     to bottom left,
     var(--background-start-hex),

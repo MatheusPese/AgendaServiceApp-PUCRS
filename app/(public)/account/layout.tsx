@@ -11,12 +11,10 @@ function Layout({ children }: { children: React.ReactNode }) {
     }
 
     return (
-        <>
+        <div className='flex flex-col h-full'>
             {/* <Alert /> */}
-            <div className="col-md-6 offset-md-3 mt-5">
-                {children}
-            </div>
-        </>
+            {children}
+        </div>
     )
 };
 export default Layout;
