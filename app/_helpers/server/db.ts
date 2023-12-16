@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-console.log(process.env.MONGODB_URI!, "TESTEEE")
-mongoose.connect(process.env.MONGODB_URI!, { dbName:'example'});
+console.log(process.env.MONGODB_URI!)
+mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_SERVER});
 mongoose.Promise = global.Promise;
 
 export const db = {
