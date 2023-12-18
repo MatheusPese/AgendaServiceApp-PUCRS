@@ -2,7 +2,6 @@
 import Link from "next/link";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import "./style.css";
 import { useUserService } from "@/app/_services";
 import { useForm } from "react-hook-form";
@@ -12,7 +11,6 @@ export default function LoginPage() {
 
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
-  const router = useRouter();
 
   const fields = {
     username: register("username", { required: "Username is required" }),
@@ -24,9 +22,9 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-center h-1/2">
-      <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="form-container">
+    <main className="flex-1 flex flex-col items-center justify-center">
+      <div className="page-body flex-1 flex flex-col items-center justify-center">
+        <div className="box-container">
           <h3>Conectar</h3>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -38,18 +36,15 @@ export default function LoginPage() {
                 required
                 placeholder="Login"
                 type="text"
-                className={`login-input ${
-                  errors.username ? " is-invalid" : ""
-                }`}
+                className={`form-control ${errors.username ? " is-invalid" : ""}`}
               />
               <input
                 {...fields.password}
                 required
                 placeholder="Senha"
                 type="password"
-                className={`login-input ${
-                  errors.password ? " is-invalid" : ""
-                }`}
+                className={`form-control ${errors.password ? " is-invalid" : ""
+                  }`}
               />
             </div>
             <button disabled={formState.isSubmitting} className="login-button">
@@ -58,7 +53,7 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
-      <footer className="bg-green-500 w-full">
+      <footer className="page-footer bg-green-500 w-full">
         <Link href="/account/register">
           Ainda não possuí cadastro? Clique aqui para cadastrar!
         </Link>
