@@ -13,12 +13,12 @@ export default function LoginPage() {
   const { errors } = formState;
 
   const fields = {
-    username: register("username", { required: "Username is required" }),
+    email: register("email", { required: "E-mail is required" }),
     password: register("password", { required: "Password is required" }),
   };
 
-  async function onSubmit({ username, password }: any) {
-    await userService.login(username, password);
+  async function onSubmit({ email, password }: any) {
+    await userService.login(email, password);
   }
 
   return (
@@ -32,11 +32,11 @@ export default function LoginPage() {
           >
             <div className="flex flex-col gap-2">
               <input
-                {...fields.username}
+                {...fields.email}
                 required
                 placeholder="Login"
                 type="text"
-                className={`form-control ${errors.username ? " is-invalid" : ""}`}
+                className={`form-control ${errors.email ? " is-invalid" : ""}`}
               />
               <input
                 {...fields.password}

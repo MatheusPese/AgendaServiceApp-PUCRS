@@ -18,6 +18,5 @@ register.schema = joi.object({
     email: joi.string().required(),
     phone: joi.string().required(),
     password: joi.string().min(6).required(),
-    password_confirmation: joi.string().required()
 
 });

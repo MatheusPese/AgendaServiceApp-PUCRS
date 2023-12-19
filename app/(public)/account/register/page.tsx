@@ -3,7 +3,7 @@
 import type { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { useUserService } from "@/app/_services";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import RegisterFormInputs from "@/app/_components/account/register/RegisterFormInputs";
 
 const Register: NextPage = () => {
@@ -15,10 +15,6 @@ const Register: NextPage = () => {
   //--useForm hooks
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
-
-  //--useRef hooks
-  const firstNameRef = useRef(null);
-  const passwordRef = useRef(null);
 
   //--useState hooks
   const [isProfile, setIsProfile] = useState(true);
@@ -35,32 +31,20 @@ const Register: NextPage = () => {
         message: "Password must be at least 6 characters",
       },
     }),
-    repeatedPassword: register("repeatedPassword", {
-      required: "repeatedPassword is required",
+    password_confirmation: register("password_confirmation", {
+      required: "Password confirmation is required",
     }),
   };
 
-  useEffect(() => {
-    if (isProfile) {
-      firstNameRef.current.focus();
-    } else {
-      passwordRef.current.focus();
-    }
-  }, [firstNameRef, passwordRef, isProfile]);
-
   const changePage = () => {
     setIsProfile(!isProfile);
-  };
-
-  const setFocus = (input: React.MutableRefObject<HTMLInputElement>) => {
-    input.current.focus();
+    
   };
 
   const onSubmit = async (user: any) => {
     await userService.register(user);
     console.log(user);
   };
-
   return (
     <>
       <div className="flex-1 flex flex-col justify-center items-center">
@@ -73,7 +57,6 @@ const Register: NextPage = () => {
                 lastNameProp={fields.lastName}
                 emailProp={fields.email}
                 phoneProp={fields.phone}
-                firstNameRef={firstNameRef}
               />
               <div className="flex flex-row justify-end">
                 <button className="btn btn-primary" onClick={changePage}>
@@ -87,14 +70,14 @@ const Register: NextPage = () => {
               <h3>Cadastro - Senha</h3>
               <RegisterFormInputs
                 passwordProp={fields.password}
-                repeatedPasswordProp={fields.repeatedPassword}
-                passwordRef={passwordRef}
+                repeatedPasswordProp={fields.password_confirmation}
               />
               <div className="flex flex-row justify-end">
                 <button className="btn btn-primary" onClick={changePage}>
                   Voltar
                 </button>
                 <button
+                type="submit"
                   disabled={formState.isSubmitting}
                   className="btn btn-success"
                 >

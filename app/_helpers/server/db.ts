@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-console.log(process.env.MONGODB_URI!)
 mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_SERVER});
 mongoose.Promise = global.Promise;
 
@@ -14,10 +13,11 @@ export const db = {
 
 function userModel() {
     const schema = new Schema({
-        username: { type: String, unique: true, required: true },
+        email: { type: String, unique: true, required: true },
         hash: { type: String, required: true },
         firstName: { type: String, required: true },
-        lastName: { type: String, required: true }
+        lastName: { type: String, required: true },
+        phone: {type: String, required: true},
     }, {
         // add createdAt and updatedAt timestamps
         timestamps: true

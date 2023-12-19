@@ -3,7 +3,7 @@ version: “3.8”
 services:
   mongodb:
     image: mongo
-    container_name: mongodb
+    container_name: ${MONGODB_CONTAINER_NAME}
     ports:
       - 27017:27017
     volumes:
@@ -14,7 +14,7 @@ services:
 
   mongo-express: 
     image: mongo-express
-    container_name: mongo-express
+    container_name: ${MONGOEXPRESS_CONTAINER_NAME}
     restart: always
     ports: 
       - 8081:8081

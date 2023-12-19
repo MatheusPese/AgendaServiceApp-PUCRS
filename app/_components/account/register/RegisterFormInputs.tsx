@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect, useRef } from "react";
+import { FunctionComponent, useState, useEffect, useRef, RefObject, forwardRef } from "react";
 
 interface ProfileProps {
   firstNameProp?: any;
@@ -7,20 +7,19 @@ interface ProfileProps {
   phoneProp?: any;
   passwordProp?: any;
   repeatedPasswordProp?: any;
-  firstNameRef?: any;
-  passwordRef?: any;
 }
 
-const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
-  firstNameProp,
-  lastNameProp,
-  emailProp,
-  phoneProp,
-  passwordProp,
-  repeatedPasswordProp,
-  firstNameRef,
-  passwordRef,
-}) => {
+const RegisterFormInputs: FunctionComponent<ProfileProps> =
+(
+  {
+    firstNameProp,
+    lastNameProp,
+    emailProp,
+    phoneProp,
+    passwordProp,
+    repeatedPasswordProp
+  }
+) => {
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
   const [progress, setProgress] = useState("");
@@ -52,7 +51,6 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
       {firstNameProp && (
         <input
           {...firstNameProp}
-          ref={firstNameRef}
           type="text"
           placeholder="Nome"
           className="text-black form-control"
@@ -86,7 +84,6 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
         <div>
           <input
             {...passwordProp}
-            ref={passwordRef}
             value={password}
             onChange={({ target }) => {
               handlePassword(target.value, false);
@@ -110,7 +107,7 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
             className={`text-black form-control ${passwordMatch}`}
           />
           {passwordMatch === "is-invalid" && (
-            <p className="text-danger">Passwords don't match</p>
+            <p className="text-danger">Passwords don`&apos;`t match</p>
           )}
         </div>
       )}
