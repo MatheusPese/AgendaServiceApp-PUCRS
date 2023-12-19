@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect } from "react";
+import { FunctionComponent, useState, useEffect, useRef } from "react";
 
 interface ProfileProps {
   firstNameProp?: any;
@@ -7,6 +7,8 @@ interface ProfileProps {
   phoneProp?: any;
   passwordProp?: any;
   repeatedPasswordProp?: any;
+  firstNameRef?: any;
+  passwordRef?: any;
 }
 
 const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
@@ -16,6 +18,8 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
   phoneProp,
   passwordProp,
   repeatedPasswordProp,
+  firstNameRef,
+  passwordRef,
 }) => {
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
@@ -23,10 +27,13 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
   const [passwordMatch, setPasswordMatch] = useState("is-invalid");
 
   useEffect(() => {
-    password === repeatedPassword
-      ? setPasswordMatch("is-valid")
-      : setPasswordMatch("is-invalid");
-    console.log(password, repeatedPassword);
+    if (password !== "" || repeatedPassword !== "") {
+      password === repeatedPassword
+        ? setPasswordMatch("is-valid")
+        : setPasswordMatch("is-invalid");
+    } else {
+      setPasswordMatch("");
+    }
   }, [password, repeatedPassword]);
 
   const handlePassword = (
@@ -45,6 +52,7 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
       {firstNameProp && (
         <input
           {...firstNameProp}
+          ref={firstNameRef}
           type="text"
           placeholder="Nome"
           className="text-black form-control"
@@ -78,6 +86,7 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
         <div>
           <input
             {...passwordProp}
+            ref={passwordRef}
             value={password}
             onChange={({ target }) => {
               handlePassword(target.value, false);
@@ -86,7 +95,6 @@ const RegisterFormInputs: FunctionComponent<ProfileProps> = ({
             placeholder="Senha"
             className={`text-black form-control ${passwordMatch}`}
           />
-          
         </div>
       )}
       {repeatedPasswordProp && (
