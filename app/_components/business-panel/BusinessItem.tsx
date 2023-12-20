@@ -9,9 +9,8 @@ interface ButtonProps {
 const businessItem: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
     <button
-      className={`${className} w-full bg-black bg-opacity-20 p-5`}
+      className={`${className} w-full bg-black bg-opacity-20 p-5 text-left`}
       onClick={onClick}
-      style={{ textAlign: 'left' }}
     >
       {children}
     </button>

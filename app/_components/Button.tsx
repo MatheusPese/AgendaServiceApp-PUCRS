@@ -11,8 +11,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
     <button
-      style={{ maxWidth: '14rem' }}
-      className={`bg-gray-400 hover:bg-gray-500 bg-opacity-70 text-white font-bold py-5 w-full rounded ${className}`}
+      className={`bg-gray-400 hover:bg-gray-500 bg-opacity-70 text-white font-bold py-5 w-full rounded max-w-[14rem] ${className}`}
       onClick={onClick}
     >
       {children}

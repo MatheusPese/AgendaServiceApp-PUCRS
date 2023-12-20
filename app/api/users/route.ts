@@ -1,6 +1,6 @@
 import joi from 'joi';
 
-import { usersRepo } from '@/app/_helpers/server';
+import { userOperations } from '@/app/_helpers/server';
 import { apiHandler } from '@/app/_helpers/server/api';
 
 module.exports = apiHandler({
@@ -9,12 +9,12 @@ module.exports = apiHandler({
 });
 
 async function getAll() {
-    return await usersRepo.getAll();
+    return await userOperations.getAll();
 }
 
 async function create(req: Request) {
     const body = await req.json();
-    await usersRepo.create(body);
+    await userOperations.create(body);
 }
 
 create.schema = joi.object({
