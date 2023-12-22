@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useUserService } from "@/app/_services";
 import { useState } from "react";
 import RegisterFormInputs from "@/app/_components/account/register/RegisterFormInputs";
+import Link from "next/link";
 
 // Define the Register functional component
 const Register: NextPage = () => {
@@ -60,12 +61,13 @@ const Register: NextPage = () => {
           {isProfile && (
             <>
               {/* Profile form */}
-              <h3>Cadastro</h3>
+              <h3 className="text-2xl pb-3">Cadastro</h3>
               <RegisterFormInputs
-                firstNameProp={fields.firstName}
-                lastNameProp={fields.lastName}
-                emailProp={fields.email}
-                phoneProp={fields.phone}
+                firstName={fields.firstName}
+                lastName={fields.lastName}
+                email={fields.email}
+                phone={fields.phone}
+                type="profile"
               />
               {/* Navigation buttons */}
               <div className="flex flex-row justify-between gap-2 pt-4">
@@ -82,18 +84,19 @@ const Register: NextPage = () => {
           {!isProfile && (
             <>
               {/* Password form */}
-              <h3>Cadastro - Senha</h3>
+              <h2 className="text-2xl pb-3">Cadastro - Senha</h2>
               <RegisterFormInputs
-                passwordProp={fields.password}
-                repeatedPasswordProp={fields.password_confirmation}
+                password={fields.password}
+                confirmPassword={fields.password_confirmation}
+                type="password"
               />
               {/* Navigation buttons */}
-              <div className="flex flex-row justify-end">
+              <div className="flex flex-row justify-between gap-2 pt-4">
                 <button className="btn btn-primary" onClick={changePage}>
                   Voltar
                 </button>
                 <button
-                type="submit"
+                  type="submit"
                   disabled={formState.isSubmitting}
                   className="btn btn-success"
                 >
