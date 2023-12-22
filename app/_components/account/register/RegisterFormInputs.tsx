@@ -1,118 +1,106 @@
-import { FunctionComponent, useState, useEffect, useRef, RefObject, forwardRef } from "react";
+import { FunctionComponent, useState, useEffect } from "react";
 
 interface ProfileProps {
-  firstNameProp?: any;
-  lastNameProp?: any;
-  emailProp?: any;
-  phoneProp?: any;
-  passwordProp?: any;
-  repeatedPasswordProp?: any;
+  firstName?: any;
+  lastName?: any;
+  email?: any;
+  phone?: any;
+  type?: "password" | "profile";
 }
 
-const RegisterFormInputs: FunctionComponent<ProfileProps> =
-(
-  {
-    firstNameProp,
-    lastNameProp,
-    emailProp,
-    phoneProp,
-    passwordProp,
-    repeatedPasswordProp
-  }
+interface PasswordProps {
+  password?: any;
+  confirmPassword?: any;
+  type?: "password" | "profile";
+}
+
+const RegistrationInputs: FunctionComponent<ProfileProps & PasswordProps> = (
+  { firstName, lastName, email, phone, password, confirmPassword, type }
 ) => {
-  const [password, setPassword] = useState("");
-  const [repeatedPassword, setRepeatedPassword] = useState("");
-  const [progress, setProgress] = useState("");
-  const [passwordMatch, setPasswordMatch] = useState("is-invalid");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
+  const [passwordValidationClass, setPasswordValidationClass] = useState("");
+  const [passwordMismatchMessage, setPasswordMismatchMessage] = useState("");
 
   useEffect(() => {
-    if (password !== "" || repeatedPassword !== "") {
-      password === repeatedPassword
-        ? setPasswordMatch("is-valid")
-        : setPasswordMatch("is-invalid");
+    if (passwordValue !== "" || confirmPasswordValue !== "") {
+      passwordValue === confirmPasswordValue
+        ? setPasswordValidationClass("is-valid")
+        : setPasswordValidationClass("is-invalid");
     } else {
-      setPasswordMatch("");
+      setPasswordValidationClass("");
     }
-  }, [password, repeatedPassword]);
+  }, [passwordValue, confirmPasswordValue]);
 
-  const handlePassword = (
-    passwordValue: string,
-    isRepeated?: false | boolean
+  const handlePasswordChange = (
+    value: string,
+    isConfirmPassword: boolean = false
   ) => {
-    if (!isRepeated) {
-      setPassword(passwordValue);
+    if (!isConfirmPassword) {
+      setPasswordValue(value);
     } else {
-      setRepeatedPassword(passwordValue);
+      setConfirmPasswordValue(value);
     }
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      {firstNameProp && (
-        <input
-          {...firstNameProp}
-          type="text"
-          placeholder="Nome"
-          className="text-black form-control"
-        />
-      )}
-      {lastNameProp && (
-        <input
-          {...lastNameProp}
-          type="text"
-          placeholder="Sobrenome"
-          className="text-black form-control"
-        />
-      )}
-      {emailProp && (
-        <input
-          {...emailProp}
-          type="email"
-          placeholder="E-mail"
-          className="text-black form-control"
-        />
-      )}
-      {phoneProp && (
-        <input
-          {...phoneProp}
-          type="tel"
-          placeholder="Telefone"
-          className="text-black form-control"
-        />
-      )}
-      {passwordProp && (
-        <div>
+    <>
+      {type === "profile" && (
+        <div className="flex flex-col gap-3">
           <input
-            {...passwordProp}
-            value={password}
+            {...firstName}
+            type="text"
+            placeholder="Nome"
+            className="text-black form-control"
+          />
+          <input
+            {...lastName}
+            type="text"
+            placeholder="Sobrenome"
+            className="text-black form-control"
+          />
+          <input
+            {...email}
+            type="email"
+            placeholder="E-mail"
+            className="text-black form-control"
+          />
+          <input
+            {...phone}
+            type="tel"
+            placeholder="Telefone"
+            className="text-black form-control"
+          />
+        </div>
+      )}
+      {type === "password" && (
+        <div className="flex flex-col gap-3">
+          <input 
+            {...password}
+            value={passwordValue}
             onChange={({ target }) => {
-              handlePassword(target.value, false);
+              handlePasswordChange(target.value);
             }}
             type="password"
             placeholder="Senha"
-            className={`text-black form-control ${passwordMatch}`}
+            className={`text-black form-control ${passwordValidationClass}`}
           />
-        </div>
-      )}
-      {repeatedPasswordProp && (
-        <div>
           <input
-            {...repeatedPasswordProp}
-            value={repeatedPassword}
+            {...confirmPassword}
+            value={confirmPasswordValue}
             onChange={({ target }) => {
-              handlePassword(target.value, true);
+              handlePasswordChange(target.value, true);
             }}
             type="password"
             placeholder="Repetir Senha"
-            className={`text-black form-control ${passwordMatch}`}
+            className={`text-black form-control ${passwordValidationClass}`}
           />
-          {passwordMatch === "is-invalid" && (
-            <p className="text-danger">Passwords don`&apos;`t match</p>
+          {passwordValidationClass === "is-invalid" && (
+            <p className="text-danger">{passwordMismatchMessage}</p>
           )}
         </div>
       )}
-    </div>
+    </>
   );
 };
-
-export default RegisterFormInputs;
+export default RegistrationInputs;
