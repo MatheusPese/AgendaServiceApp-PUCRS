@@ -58,7 +58,10 @@ const Register: NextPage = () => {
                 emailProp={fields.email}
                 phoneProp={fields.phone}
               />
-              <div className="flex flex-row justify-end">
+              <div className="flex flex-row justify-between gap-2 pt-4">
+                <Link href="/account/login" className="btn btn-outline-primary">
+                  Cancelar
+                </Link>
                 <button className="btn btn-primary" onClick={changePage}>
                   Avançar
                 </button>
