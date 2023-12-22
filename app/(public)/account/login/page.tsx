@@ -22,14 +22,11 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex-1 flex flex-col items-center justify-center">
-      <div className="page-body flex-1 flex flex-col items-center justify-center">
-        <div className="box-container">
+    <main className="page-container">
+      <div className="page-body items-center overflow-hidden">
+        <div className="login-box bg-black/[0.2]">
           <h3>Conectar</h3>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
-          >
+          <form className="flex flex-col gap-4"  onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
               <input
                 {...fields.email}
@@ -43,8 +40,9 @@ export default function LoginPage() {
                 required
                 placeholder="Senha"
                 type="password"
-                className={`form-control ${errors.password ? " is-invalid" : ""
-                  }`}
+                className={`form-control ${
+                  errors.password ? " is-invalid" : ""
+                }`}
               />
             </div>
             <button disabled={formState.isSubmitting} className="login-button">
@@ -53,7 +51,8 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
-      <footer className="page-footer bg-green-500 w-full">
+
+      <footer className="page-footer bg-green-600 max-h-3">
         <Link href="/account/register">
           Ainda não possuí cadastro? Clique aqui para cadastrar!
         </Link>

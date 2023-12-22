@@ -1,32 +1,29 @@
-import { ReactNode } from 'react';
-import './PageTemplate.css';
+import { ReactNode } from "react";
 
 interface PageTemplateProps {
   children: {
-    Top?: ReactNode;
-    Middle?: ReactNode;
-    Bottom?: ReactNode;
+    Header?: ReactNode;
+    Body?: ReactNode;
+    Footer?: ReactNode;
   };
+  classesHeader?: string;
+  classesBody?: string;
+  classesFooter?: string;
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({ children: { Top, Middle, Bottom } }) => {
-  const scrollBar = "scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full "
-
+const PageTemplate: React.FC<PageTemplateProps> = ({
+  children: { Header, Body, Footer },
+  classesHeader,
+  classesBody,
+  classesFooter,
+}) => {
   return (
-    <main className="main-container page-gradient" >
-      <div className="top-container">
-        {Top}
-      </div>
-      <div className={`middle-container translucent-background ${scrollBar}`} >
-        {Middle}
-      </div>
-      <div className="bottom-container">
-        {Bottom}
-      </div>
+    <main className="page-container page-gradient">
+      <div className={`page-header ${classesHeader}`}>{Header}</div>
+      <div className={`page-body bg-black/[0.2] w-full ${classesBody}`}>{Body}</div>
+      <div className={`page-footer ${classesFooter}`}>{Footer}</div>
     </main>
-  )
-}
+  );
+};
 
 export default PageTemplate;
-
-

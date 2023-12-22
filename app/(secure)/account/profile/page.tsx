@@ -31,20 +31,19 @@ function Profile()  {
     };
 
 
-    const Top = (
-        <div className='mx-auto text-2xl'>Perfil</div>
+    const Header = (
+        <div className='text-2xl'>Perfil</div>
     );
 
 
 
-    const Middle = (
-        <div className="flex-row justify-between space-y-10 ">
-            
+    const Body = (
+        <div className="flex flex-col w-full h-full justify-between gap-4">
             <InfoCard titulo='NOME' valor='Fulano da Silva' onClickEdit={editName}></InfoCard>
             <InfoCard titulo='E-MAIL' valor='fulano@mail.com' onClickEdit={editEmail}></InfoCard>
             <InfoCard titulo='TELEFONE' valor='+99 99 9 9999-9999' onClickEdit={editPhone}></InfoCard>
             <InfoCard titulo='SENHA' valor='************' onClickEdit={editPassword}></InfoCard>
-            <div className="flex justify-center text-red-500 font-bold underline">Deletar Conta</div>
+            <div className="flex justify-center justify-self-end text-red-500 font-bold underline">Deletar Conta</div>
             {menuVisible && (
                 <FloatingMenu />
             )}
@@ -52,9 +51,9 @@ function Profile()  {
     );
 
 
-    const Bottom = (
-        <div className='mx-auto flex w-full justify-between'>
-            <Button className='flex-2 m-2' onClick={MenuClick}>
+    const Footer = (
+        <div className='flex w-full justify-between'>
+            <Button className='flex-2' onClick={MenuClick}>
                 Menu
             </Button>
         </div>
@@ -63,9 +62,9 @@ function Profile()  {
     return (
         <PageTemplate>
             {{
-                Top: Top,
-                Middle: Middle,
-                Bottom: Bottom,
+                Header,
+                Body,
+                Footer,
             }}
         </PageTemplate>
     );

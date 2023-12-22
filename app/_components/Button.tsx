@@ -1,17 +1,15 @@
-// components/Button.tsx
-
 import React, { ReactNode } from 'react';
 
 interface ButtonProps {
   children: ReactNode;
   onClick?: () => void;
-  className?: string; // Add className prop
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
     <button
-      className={`bg-gray-400 hover:bg-gray-500 bg-opacity-70 text-white font-bold py-5 w-full rounded max-w-[14rem] ${className}`}
+      className={`btn btn-secondary flex flex-grow justify-center items-center h-[4rem] m-3 text-white font-bold w-full rounded max-w-[50%] ${className}`}
       onClick={onClick}
     >
       {children}

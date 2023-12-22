@@ -6,10 +6,10 @@ interface ButtonProps {
   className?: string; // Add className prop
 }
 
-const businessItem: React.FC<ButtonProps> = ({ children, onClick, className }) => {
+const businessItem: React.FC<ButtonProps> = ({ children, onClick, className = "" }) => {
   return (
     <button
-      className={`${className} w-full bg-black bg-opacity-20 p-5 text-left`}
+      className={`${className} flex-1 w-full bg-[rgba(0,0,0,0.3)] text-left p-10`}
       onClick={onClick}
     >
       {children}

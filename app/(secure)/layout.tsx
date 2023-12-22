@@ -13,10 +13,9 @@ function Layout({ children }: { children: React.ReactNode }) {
     }
 
     return (
-            <div className="p-4">
-                <div className="container">
+
+                <div>
                     {children}
                 </div>
-            </div>
     );
 }

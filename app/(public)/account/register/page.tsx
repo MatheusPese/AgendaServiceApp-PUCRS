@@ -61,7 +61,7 @@ const Register: NextPage = () => {
           {isProfile && (
             <>
               {/* Profile form */}
-              <h3 className="text-2xl pb-3">Cadastro</h3>
+              <h2 className="text-2xl pb-3">Cadastro</h2>
               <RegisterFormInputs
                 firstName={fields.firstName}
                 lastName={fields.lastName}
