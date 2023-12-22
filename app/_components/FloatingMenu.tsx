@@ -1,25 +1,31 @@
 'use client'
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useUserService } from "../_services";
 
 interface FloatingMenuProps {
     
 }
 
 
+
 const FloatingMenu: React.FC<FloatingMenuProps> = () => {
+    
+    const  userService = useUserService();
     const router = useRouter();
+
+
     const Menu1 = () =>{
         router.push('/business-panel');
     };
+
     const Menu2 = () =>{
         router.push('/account/profile');
     };
-    const Menu3 = () =>{
-        router.push('/account/login');
+
+    const Menu3 = async () =>{
+        await userService.logout()
     };
-
-
 
     return ( 
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-60 rounded-lg m-auto p-0 text-black flex-row items-center ">
