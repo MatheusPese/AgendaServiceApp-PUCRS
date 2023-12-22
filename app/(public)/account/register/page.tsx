@@ -6,7 +6,7 @@ import type { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { useUserService } from "@/app/_services";
 import { useState } from "react";
-import RegisterFormInputs from "@/app/_components/account/register/RegisterFormInputs";
+import RegisterFormInputs from "@/app/_components/account/register/RegisterForms";
 import Link from "next/link";
 
 // Define the Register functional component
