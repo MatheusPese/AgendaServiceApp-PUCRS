@@ -14,7 +14,7 @@ interface PasswordProps {
   type?: "password" | "profile";
 }
 
-const RegistrationInputs: FunctionComponent<ProfileProps & PasswordProps> = (
+const RegisterForms: FunctionComponent<ProfileProps & PasswordProps> = (
   { firstName, lastName, email, phone, password, confirmPassword, type }
 ) => {
   const [passwordValue, setPasswordValue] = useState("");
@@ -103,4 +103,4 @@ const RegistrationInputs: FunctionComponent<ProfileProps & PasswordProps> = (
     </>
   );
 };
-export default RegistrationInputs;
+export default RegisterForms;

@@ -6,10 +6,10 @@ import type { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { useUserService } from "@/app/_services";
 import { useState } from "react";
-import RegisterFormInputs from "@/app/_components/account/register/RegisterForms";
+import RegisterForms from "@/app/_components/account/register/RegisterForms";
 import Link from "next/link";
 
-// Define the Register functional component
+// Define the Register page
 const Register: NextPage = () => {
   // HOOKS
 
@@ -49,7 +49,6 @@ const Register: NextPage = () => {
   // Function to handle form submission
   const onSubmit = async (user: any) => {
     await userService.register(user);
-    console.log(user);
   };
 
   // Render the component
@@ -62,7 +61,7 @@ const Register: NextPage = () => {
             <>
               {/* Profile form */}
               <h2 className="text-2xl pb-3">Cadastro</h2>
-              <RegisterFormInputs
+              <RegisterForms
                 firstName={fields.firstName}
                 lastName={fields.lastName}
                 email={fields.email}
@@ -85,7 +84,7 @@ const Register: NextPage = () => {
             <>
               {/* Password form */}
               <h2 className="text-2xl pb-3">Cadastro - Senha</h2>
-              <RegisterFormInputs
+              <RegisterForms
                 password={fields.password}
                 confirmPassword={fields.password_confirmation}
                 type="password"

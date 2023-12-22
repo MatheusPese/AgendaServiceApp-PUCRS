@@ -1,1 +1,1 @@
-export * from './RegisterFormInputs';
+export * from './RegisterForms';
