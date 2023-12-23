@@ -76,12 +76,13 @@ export default function Home() {
       
       <NewAppointmentCard />
       
-      {appointments.map((index, time) => (
+      {appointments.map((appointment, index) => (
         <AppointmentCard
-          time     = {index.time}
-          employee = {index.employee}
-          client   = {index.client}
-          services = {index.services}
+          key      = {index}
+          time     = {appointment.time}
+          employee = {appointment.employee}
+          client   = {appointment.client}
+          services = {appointment.services}
         />
       ))}
       
