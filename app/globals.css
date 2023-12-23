@@ -12,9 +12,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-hex: #93c5fd;
-    --background-middle-hex: #48a9d4;
-    --background-end-hex: #319795;
+    --background-start-hex: #5193F5 4.98%;
+    --background-middle-hex: #6C87AF 35.27%, #568686 74.98%;
+    --background-end-hex: #75C5FF 109.26%;
   }
 }
 
@@ -29,11 +29,11 @@ html body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background: linear-gradient(
-    to bottom left,
+    180deg
     var(--background-start-hex),
     var(--background-middle-hex),
     var(--background-end-hex)
-  );
+    );
 }
 
 .page-container{
