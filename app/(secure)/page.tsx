@@ -17,7 +17,7 @@ function Home() {
     }, []);
 
     if (user) {
-        redirect('/business-panel')
+        redirect('/agendas')
     } else {
         return <p>loading... <span className="spinner-border spinner-border-sm me-1"></span></p>;
     }

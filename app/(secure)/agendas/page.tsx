@@ -27,7 +27,7 @@ export default function Home() {
     setMenuVisible(!menuVisible);
   };
 
-  const Header = <h2 className="text-2xl">Negócios</h2>;
+  const Header = <h2 className="text-2xl">Agendas</h2>;
 
   const Body = (
     <div className="flex flex-col gap-2 w-full"> 

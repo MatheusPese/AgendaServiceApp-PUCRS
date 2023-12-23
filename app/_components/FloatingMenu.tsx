@@ -16,7 +16,7 @@ const FloatingMenu: React.FC<FloatingMenuProps> = () => {
 
 
     const Menu1 = () =>{
-        router.push('/business-panel');
+        router.push('/agendas');
     };
 
     const Menu2 = () =>{
