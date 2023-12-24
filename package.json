@@ -3,10 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    
+    "dev"   : "next dev",
+    "build" : "next build",
+    "start" : "next start",
+    "lint"  : "next lint",
+ 
+    "compose-up"      : "docker compose --env-file ./.env.local      up",
+    "compose-down"    : "docker compose                              down",
+    
+    "compose-start"   : "docker compose start",
+    "compose-stop"    : "docker compose stop"
+
+    
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
