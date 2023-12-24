@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_SERVER});
+mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_DATABASE});
 mongoose.Promise = global.Promise;
 
 export const db = {
