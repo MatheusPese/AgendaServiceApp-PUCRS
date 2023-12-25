@@ -25,7 +25,7 @@ export default function LoginPage() {
     <main className="page-container">
       <div className="page-body items-center overflow-hidden">
         <div className="login-box bg-black/[0.2]">
-          <h3>Conectar</h3>
+          <h3 className="text-2xl">Conectar</h3>
           <form className="flex flex-col gap-4"  onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
               <input
