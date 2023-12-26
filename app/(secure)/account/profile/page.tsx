@@ -1,10 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
 
-import Button from "@/app/_components/Button";
-import PageTemplate from "@/app/_components/PageTemplate";
-import FloatingMenu from "@/app/_components/FloatingMenu";
-import InfoCard from "@/app/_components/InfoCard";
+import Button from "@/app/_components/Globals/Button";
+import PageTemplate from "@/app/_components/Globals/PageTemplate";
+import FloatingMenu from "@/app/_components/Globals/FloatingMenu";
+import AccountDetailCard from "@/app/_components/Account/Profile/AccountDetailCard";
 import { useUserService } from "@/app/_services";
 
 
@@ -51,18 +51,18 @@ function Profile()  {
         <>
         {user && (  //check if user is not null
         <div className="flex flex-col w-full h-full justify-between gap-4">
-            <InfoCard titulo='NOME' valor={`${user?.firstName} ${user?.lastName}`} onClickEdit={editName}></InfoCard>
-            <InfoCard titulo='E-MAIL' valor={`${user?.email}`} onClickEdit={editEmail}></InfoCard>
-            <InfoCard titulo='TELEFONE' valor={`${user?.phone}`} onClickEdit={editPhone}></InfoCard>
-            <InfoCard titulo='SENHA' valor='************' onClickEdit={editPassword}></InfoCard>
-            <button className="flex justify-center justify-self-end text-red-500 font-bold underline"
+            <AccountDetailCard titulo='NOME' valor={`${user?.firstName} ${user?.lastName}`} onClickEdit={editName}></AccountDetailCard>
+            <AccountDetailCard titulo='E-MAIL' valor={`${user?.email}`} onClickEdit={editEmail}></AccountDetailCard>
+            <AccountDetailCard titulo='TELEFONE' valor={`${user?.phone}`} onClickEdit={editPhone}></AccountDetailCard>
+            <AccountDetailCard titulo='SENHA' valor='************' onClickEdit={editPassword}></AccountDetailCard>
+            <Button customStyle="danger" className="flex justify-center justify-self-end"
             onClick={() => userService.delete(user.id)}>
                 {/* TODO: ask for confirmation before deleting user*/}
                 {user.isDeleting
-                    ? <span className="spinner-border spinner-border-sm"></span>
+                    ? <span className="spinner-border spinner-border-sm">Deletando...</span>
                     : <span>Deletar Conta</span>
                 }
-            </button>
+            </Button>
         </div>)}
         {menuVisible && (
                 <FloatingMenu />
@@ -72,11 +72,7 @@ function Profile()  {
 
 
     const Footer = (
-        <div className='flex w-full justify-between'>
-            <Button className='flex-2' onClick={MenuClick}>
-                Menu
-            </Button>
-        </div>
+<></>
     );
 
     return (

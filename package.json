@@ -3,19 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    
-    "dev"   : "next dev",
-    "build" : "next build",
-    "start" : "next start",
-    "lint"  : "next lint",
- 
-    "compose-up"      : "docker compose --env-file ./.env.local      up",
-    "compose-down"    : "docker compose                              down",
-    
-    "compose-start"   : "docker compose start",
-    "compose-stop"    : "docker compose stop"
-
-    
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "compose-up": "docker compose --env-file ./.env.local      up",
+    "compose-down": "docker compose                              down",
+    "compose-start": "docker compose start",
+    "compose-stop": "docker compose stop"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -23,25 +18,24 @@
     "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
-    "next": "~13",
-    "react": "^18",
+    "next": "^14.0.4",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
-    "react-dom": "^18",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/bootstrap": "^5.2.10",
-    "@types/date-fns": "^2.6.0",
     "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.0.1",
     "date-fns": "^3.0.5",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^14.0.3",
+    "eslint-config-next": "^14.0.4",
     "postcss": "^8",
     "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.3.0",

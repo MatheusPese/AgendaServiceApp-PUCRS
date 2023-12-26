@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation";
 import React from "react";
-import { useUserService } from "../_services";
+import { useUserService } from "@/app/_services";
 
 interface FloatingMenuProps {
     

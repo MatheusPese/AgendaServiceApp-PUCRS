@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface InfoCardProps {
+interface AccountDetailProps {
   titulo: string;
   valor: string;
   onClickEdit: () => void;
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({ titulo, valor, onClickEdit }) => {
+const AccountDetailCard: React.FC<AccountDetailProps> = ({ titulo, valor, onClickEdit }) => {
   return (
     <div className="flex justify-between w-full p-4">
       <div className="flex-row items-center">
@@ -20,4 +20,4 @@ const InfoCard: React.FC<InfoCardProps> = ({ titulo, valor, onClickEdit }) => {
   );
 };
 
-export default InfoCard;
+export default AccountDetailCard;

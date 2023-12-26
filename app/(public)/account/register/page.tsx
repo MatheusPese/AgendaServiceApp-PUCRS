@@ -8,6 +8,7 @@ import { useUserService } from "@/app/_services";
 import { useState } from "react";
 import RegisterForms from "@/app/_components/Account/RegisterForms";
 import Link from "next/link";
+import Button from "@/app/_components/Globals/Button";
 
 // Define the Register page
 const Register: NextPage = () => {
@@ -91,20 +92,20 @@ const Register: NextPage = () => {
               />
               {/* Navigation buttons */}
               <div className="flex flex-row justify-between gap-2 pt-4">
-                <button className="btn btn-primary" onClick={changePage}>
-                  Voltar
-                </button>
-                <button
+                <Button onClick={changePage} buttonText={"Voltar"} customStyle={"primary"} />
+                <Button 
+                  buttonText="Enviar"
+                  customStyle="success"
+                  
                   type="submit"
                   disabled={formState.isSubmitting}
-                  className="btn btn-success"
                 >
                   {/* Show spinner while form is submitting */}
                   {formState.isSubmitting && (
                     <span className="spinner-border spinner-border-sm me-1"></span>
                   )}
-                  Enviar
-                </button>
+                  
+                </Button>
               </div>
             </>
           )}

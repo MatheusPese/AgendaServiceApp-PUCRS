@@ -2,19 +2,11 @@
 
 import { useState }       from "react";
 
-import Button             from "@/app/_components/Button";
-import FloatingMenu       from "@/app/_components/FloatingMenu";
-import PageTemplate       from "@/app/_components/PageTemplate";
-import AppointmentCard    from "@/app/_components/business/AppointmentCard";
-import NewAppointmentCard from "@/app/_components/business/NewAppointmentCard";
+import Button             from "@/app/_components/Globals/Button";
+import FloatingMenu       from "@/app/_components/Globals/FloatingMenu";
+import PageTemplate       from "@/app/_components/Globals/PageTemplate";
+import AppointmentCard    from "@/app/_components/Appointment/view/Card";
 
-interface Appointment {
-  _id      : string;
-  time     : string;
-  employee : string;
-  client   : string;
-  services : string[];
-}
 
 export default function Home() {
   
@@ -69,12 +61,12 @@ export default function Home() {
   
 
   
-  const Header = <h2 className="text-2xl">Negócios</h2>;
+  const Header = <h2 className="text-2xl">Compromissos</h2>;
   
   const Body = (
     <div className="grid gap-3 align-content-around justify-content-between content-around justify-around grid-cols-3 p-3">
       
-      <NewAppointmentCard />
+      <AppointmentCard type="Create"/>
       
       {appointments.map((appointment, index) => (
         <AppointmentCard
@@ -92,9 +84,8 @@ export default function Home() {
   );
   
   const Footer = (
-    <div className="flex w-full justify-between gap-3">
-      <Button onClick={toggleMenu}>Menu</Button>
-      <Button>Compartilhar</Button>
+    <div className="p-2 flex w-full justify-between gap-3">
+      <Button customStyle="transparent" buttonText = "Menu" onClick={toggleMenu}/>
     </div>
   );
   

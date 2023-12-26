@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import PageTemplate from "@/app/_components/PageTemplate";
-import FloatingMenu from "@/app/_components/FloatingMenu";
-import BusinessItem from "@/app/_components/business-panel/BusinessItem";
-import Button from "@/app/_components/Button";
+import PageTemplate from "@/app/_components/Globals/PageTemplate";
+import FloatingMenu from "@/app/_components/Globals/FloatingMenu";
+import Agenda from "@/app/_components/Agendas/AgendaCard";
+import Button from "@/app/_components/Globals/Button";
 
 export default function Home() {
   const [menuVisible, setMenuVisible] = useState(false);
-  var business = [
+  var agendas = [
     "Salão de Beleza 1",
     "Salão de Beleza 2",
     "Salão de Beleza 3",
@@ -31,20 +31,15 @@ export default function Home() {
 
   const Body = (
     <div className="flex flex-col gap-2 w-full"> 
-      {business.map((item, index) => (
-        <BusinessItem key={index}> {item} </BusinessItem>
+      {agendas.map((item, index) => (
+        <Agenda key={index}> {item} </Agenda>
       ))}
       {menuVisible && <FloatingMenu />}
     </div>
   );
 
   const Footer = (
-    <div className=" flex w-full justify-between items-between gap-3">
-      <Button onClick={MenuClick}>
-        Menu
-      </Button>
-      <Button >Compartilhar</Button>
-    </div>
+      <Button buttonText="Compartilhar" customStyle="transparent"/>
   );
 
   return (
