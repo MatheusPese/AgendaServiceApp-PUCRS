@@ -98,7 +98,7 @@ const Register: NextPage = () => {
                   Voltar
                 </Button>
                 <Button
-                  type="button" customStyle="transparent" size="small"
+                  type="submit" customStyle="transparent" size="small"
                   disabled={formState.isSubmitting}
                 >
                   {/* Show spinner while form is submitting */}

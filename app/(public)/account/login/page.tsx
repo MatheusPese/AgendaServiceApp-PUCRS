@@ -13,12 +13,16 @@ export default function LoginPage() {
   const { errors } = formState;
 
   const fields = {
-    email: register("email", { required: "E-mail is required" }),
+    identifier: register("identifier", { required: "Email or phone number is required" }),
     password: register("password", { required: "Password is required" }),
   };
 
-  async function onSubmit({ email, password }: any) {
-    await userService.login(email, password);
+  async function onSubmit({ identifier, password }: any) {
+    // Check if the identifier looks like an email
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identifier);
+
+    // Use login function with appropriate identifier field
+    await userService.login(isEmail ? { email:identifier } : { phone: identifier }, password);
   }
 
   return (
@@ -26,23 +30,21 @@ export default function LoginPage() {
       <div className="page-body items-center overflow-hidden">
         <div className="semitransparent-box">
           <h3>Conectar</h3>
-          <form className="flex flex-col gap-4"  onSubmit={handleSubmit(onSubmit)}>
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
               <input
-                {...fields.email}
+                {...fields.identifier}
                 required
-                placeholder="Login"
+                placeholder="Email ou Telefone"
                 type="text"
-                className={`form-control ${errors.email ? " is-invalid" : ""}`}
+                className={`form-control ${errors.identifier ? " is-invalid" : ""}`}
               />
               <input
                 {...fields.password}
                 required
                 placeholder="Senha"
                 type="password"
-                className={`form-control ${
-                  errors.password ? " is-invalid" : ""
-                }`}
+                className={`form-control ${errors.password ? " is-invalid" : ""}`}
               />
             </div>
             

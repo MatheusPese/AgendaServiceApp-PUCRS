@@ -26,10 +26,11 @@ function useUserService(): IUserService {
         users,
         user,
         currentUser,
-        login: async (email, password) => {
+        login: async (identifier, password) => {
             alertService.clear();
             try {
-                const currentUser = await fetch.post('/api/account/login', { email, password });
+                const currentUser = await fetch.post('/api/account/login', { identifier, password });
+  
                 userStore.setState({ ...initialState, currentUser });
 
                 // get return url from query parameters or default to '/'
@@ -108,8 +109,7 @@ interface IUser {
     id: string,
     firstName: string,
     lastName: string,
-    email: string,
-    phone: string,
+    identifier: {email?:string, phone?:string}
     password: string,
     isDeleting?: boolean
 }
@@ -121,7 +121,7 @@ interface IUserStore {
 }
 
 interface IUserService extends IUserStore {
-    login: (email: string, password: string) => Promise<void>,
+    login: (identifier: string | { email?: string, phone?: string }, password: string) => Promise<void>,
     logout: () => Promise<void>,
     register: (user: IUser) => Promise<void>,
     getAll: () => Promise<void>,

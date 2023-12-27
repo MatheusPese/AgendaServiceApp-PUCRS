@@ -9,16 +9,24 @@ module.exports = apiHandler({
 });
 
 async function login(req: Request) {
+
     const body = await req.json();
     const { user, token } = await userOperations.authenticate(body);
 
     // return jwt token in http only cookie
-    cookies().set('authorization', token, { httpOnly: true });
+    cookies().set('authorization', token, { httpOnly: true, secure:true });
 
     return user;
 }
 
-login.schema = joi.object({
-    email: joi.string().required(),
-    password: joi.string().required()
+const loginSchema = joi.object({
+    identifier: joi.alternatives().try(
+        joi.object({
+            phone: joi.string().required(),
+        }),
+        joi.object({
+            email: joi.string().email().required(),
+        })
+    ).required(),
+    password: joi.string().required(),
 });

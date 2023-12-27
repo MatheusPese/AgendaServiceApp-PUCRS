@@ -15,11 +15,17 @@ export const userOperations  = {
     delete: _delete
 };
 
-async function authenticate({ email, password }: { email: string, password: string }) {
-    const user = await User.findOne({ email });
+async function authenticate({ identifier, password }: { identifier: { phone?: string, email?: string }, password: string }) {
+    const user = await User.findOne({
+        $or: [
+          { 'phone': identifier.phone },
+          { 'email': identifier.email }
+        ]
+      });
+      
 
     if (!(user && bcrypt.compareSync(password, user.hash))) {
-        throw 'E-mail or password is incorrect';
+        throw 'E-mail, phone or password is incorrect';
     }
 
     // create a jwt token that is valid for 7 days
@@ -55,7 +61,10 @@ async function getCurrent() {
 async function create(params: any) {
     // validate
     if (await User.findOne({ email: params.email })) {
-        throw 'E-mail "' + params.email + '" is already taken';
+        throw 'E-mail "' + params.email + '" is already registered';
+    }
+    if (await User.findOne({phone: params.phone }) ){
+        throw 'Phone "' + params.phone + '" is already registered';
     }
 
     const user = new User(params);
