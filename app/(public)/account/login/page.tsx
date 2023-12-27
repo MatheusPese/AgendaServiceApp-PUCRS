@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import React, { useState } from "react";
-import "./style.css";
+import React from "react";
 import { useUserService } from "@/app/_services";
 import { useForm } from "react-hook-form";
 import Button from "@/app/_components/globals/Button";
@@ -25,7 +24,7 @@ export default function LoginPage() {
   return (
     <main className="page-container">
       <div className="page-body items-center overflow-hidden">
-        <div className="login-box bg-black/[0.2]">
+        <div className="semitransparent-box">
           <h3>Conectar</h3>
           <form className="flex flex-col gap-4"  onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
