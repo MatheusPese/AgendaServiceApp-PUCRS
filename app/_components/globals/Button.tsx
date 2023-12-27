@@ -18,14 +18,14 @@ interface Props  {
 const Button: React.FC<Props> = ({ buttonText = "", customStyle, size="small", type, onClick, className, children, ...props}) => {
   let style = "";
   customStyle === "secondary"
-  ? style = "btn-secondary"
+  ? style = "btn-secondary bg-[gray]"
   : customStyle === "success"
-  ? style ="btn-success"
+  ? style ="bg-[green]"
   : customStyle === "danger"
-  ? style = "btn-danger"
+  ? style = "bg-[red]"
   : customStyle === "transparent"
   ? style = "bg-[#00000033] hover:bg-[#00000066]"
-  : style = "btn-primary"
+  : style = "btn-primary bg-[#337bff]"
 
   return (
     <button
