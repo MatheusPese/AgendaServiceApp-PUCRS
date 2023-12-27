@@ -73,7 +73,7 @@ function Profile()  {
 
     const Footer = (
         <div className='flex w-full justify-between'>
-            <Button className='flex-2' onClick={MenuClick}>
+            <Button size="large" type="button" customStyle="transparent" className='flex-2' onClick={MenuClick}>
                 Menu
             </Button>
         </div>

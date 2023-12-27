@@ -62,12 +62,7 @@ export default function Home() {
     },
   ];
   
-  
   appointments.sort((a, b) => b.time.getTime() - a.time.getTime());
-  
-  
-  
-
   
   const Header = <h2 className="text-2xl">Negócios</h2>;
   
@@ -93,20 +88,16 @@ export default function Home() {
   
   const Footer = (
     <div className="flex w-full justify-between gap-3">
-      <Button onClick={toggleMenu}>Menu</Button>
-      <Button>Compartilhar</Button>
+      <Button type="button" customStyle="transparent" size="medium" onClick={toggleMenu}>Menu</Button>
+      <Button type="button" customStyle="transparent" size="medium" >Compartilhar</Button>
     </div>
   );
   
   return (
-    <>
-      <PageTemplate classesBody="bg-[rgba(34, 34, 34, 0.3)] w-full items-start">
-        {{
-          Header,
-          Body,
-          Footer,
-        }}
-      </PageTemplate>
-    </>
+      <PageTemplate classesBody="bg-[rgba(34, 34, 34, 0.3)] w-full items-start">{{       
+        Header,
+        Body,
+        Footer,
+      }}</PageTemplate>
   );
 }

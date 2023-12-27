@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import "./style.css";
 import { useUserService } from "@/app/_services";
 import { useForm } from "react-hook-form";
+import Button from "@/app/_components/globals/Button";
 
 export default function LoginPage() {
   const userService = useUserService();
@@ -45,9 +46,10 @@ export default function LoginPage() {
                 }`}
               />
             </div>
-            <button disabled={formState.isSubmitting} className="login-button">
+            
+            <Button size="small" type="submit" customStyle="transparent" disabled={formState.isSubmitting} className="m-[0 auto]">
               Entrar
-            </button>
+            </Button>
           </form>
         </div>
       </div>

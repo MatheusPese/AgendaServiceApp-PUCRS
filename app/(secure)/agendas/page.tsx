@@ -40,20 +40,20 @@ export default function Home() {
 
   const Footer = (
     <div className=" flex w-full justify-between items-between gap-3">
-      <Button onClick={MenuClick}>
+      <Button size="large" type="button" customStyle="transparent" onClick={MenuClick}>
         Menu
       </Button>
-      <Button >Compartilhar</Button>
+      <Button size="large" type="button" customStyle="transparent">
+        Compartilhar
+      </Button>
     </div>
   );
 
   return (
-    <PageTemplate classesBody="bg-[rgba(34, 34, 34, 0.3)] w-full items-start">
-      {{
-        Header,
-        Body,
-        Footer,
-      }}
-    </PageTemplate>
+    <PageTemplate classesBody="bg-[rgba(34, 34, 34, 0.3)] w-full items-start">{{
+      Header,
+      Body,
+      Footer,
+    }}</PageTemplate>
   );
 }
