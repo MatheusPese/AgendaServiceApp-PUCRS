@@ -8,6 +8,7 @@ import { useUserService } from "@/app/_services";
 import { useState } from "react";
 import RegisterForms from "@/app/_components/account/register/RegisterForms";
 import Link from "next/link";
+import Button from "@/app/_components/globals/Button";
 
 // Define the Register page
 const Register: NextPage = () => {
@@ -55,7 +56,7 @@ const Register: NextPage = () => {
   return (
     <>
       <div className="flex-1 flex flex-col justify-center items-center">
-        <form className="box-container" onSubmit={handleSubmit(onSubmit)}>
+        <form className="semitransparent-box" onSubmit={handleSubmit(onSubmit)}>
           {/* Render profile form if isProfile is true */}
           {isProfile && (
             <>
@@ -70,12 +71,14 @@ const Register: NextPage = () => {
               />
               {/* Navigation buttons */}
               <div className="flex flex-row justify-between gap-2 pt-4">
-                <Link href="/account/login" className="btn btn-outline-primary">
-                  Cancelar
-                </Link>
-                <button className="btn btn-primary" onClick={changePage}>
+              <Link href="/account/login">
+                <Button type="button" customStyle="transparent" size="small">
+                    Cancelar
+                </Button>
+              </Link>
+                <Button type="button" customStyle="transparent" size="small" onClick={changePage}>
                   Avançar
-                </button>
+                </Button>
               </div>
             </>
           )}
@@ -91,20 +94,19 @@ const Register: NextPage = () => {
               />
               {/* Navigation buttons */}
               <div className="flex flex-row justify-between gap-2 pt-4">
-                <button className="btn btn-primary" onClick={changePage}>
+                <Button type="button" customStyle="transparent" size="small" onClick={changePage}>
                   Voltar
-                </button>
-                <button
-                  type="submit"
+                </Button>
+                <Button
+                  type="button" customStyle="transparent" size="small"
                   disabled={formState.isSubmitting}
-                  className="btn btn-success"
                 >
                   {/* Show spinner while form is submitting */}
                   {formState.isSubmitting && (
                     <span className="spinner-border spinner-border-sm me-1"></span>
                   )}
                   Enviar
-                </button>
+                </Button>
               </div>
             </>
           )}
