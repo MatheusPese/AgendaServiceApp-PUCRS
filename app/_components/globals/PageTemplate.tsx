@@ -18,11 +18,11 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
   classesFooter,
 }) => {
   return (
-    <main className="page-container page-gradient">
+    <div className="page-container page-gradient">
       <div className={`page-header ${classesHeader}`}>{Header}</div>
       <div className={`page-body bg-black/[0.2] w-full ${classesBody}`}>{Body}</div>
       <div className={`page-footer ${classesFooter}`}>{Footer}</div>
-    </main>
+    </div>
   );
 };
 
