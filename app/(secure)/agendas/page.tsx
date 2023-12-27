@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PageTemplate from "@/app/_components/globals/PageTemplate";
 import FloatingMenu from "@/app/_components/globals/FloatingMenu";
-import Agenda from "@/app/_components/business-panel/Agenda";
+import Agenda from "@/app/_components/agendas/Agenda";
 import Button from "@/app/_components/globals/Button";
 
 export default function Home() {
