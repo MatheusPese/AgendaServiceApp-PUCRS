@@ -31,17 +31,20 @@ const Button: React.FC<Props> = ({ buttonText = "", customStyle, size="small", t
     <button
       type = {type}
       onClick={onClick}
-      className={`btn py-2 px-8 ${style} ${className}`}
+      className={`btn py-2 px-8 ${style} ${className}
+      ${size === "tiny"   ? "text-[0.8rem]" : 
+      size === "small"  ? "text-[1rem]" : 
+      size === "medium" ? "text-[1.2rem]"   : 
+      size === "large"  ?  "text-[2rem]"  : 
+    ""}
+      `}
+
       {...props}
     >
       <div
         className={`[font-family:'Inter',Helvetica] text-white relative text-center
           ${customStyle === "danger" ? "underline font-bold" : ""} 
-          ${size === "tiny" ? "text-[1vh]": 
-            size === "small" ? "text-[2vh]": 
-            size === "medium" ? "text-[3vh]" : 
-            size === "large" ? "text-[4vh]" : ""
-        }
+
         `}
       >
         {buttonText}

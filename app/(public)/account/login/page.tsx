@@ -30,7 +30,7 @@ export default function LoginPage() {
       <div className="page-body items-center overflow-hidden">
         <div className="semitransparent-box">
           <h3>Conectar</h3>
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+          <form className="flex flex-col gap-4 justify-center items-center" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
               <input
                 {...fields.identifier}
@@ -48,7 +48,7 @@ export default function LoginPage() {
               />
             </div>
             
-            <Button size="small" type="submit" customStyle="transparent" disabled={formState.isSubmitting} className="m-[0 auto]">
+            <Button size="medium" type="submit" customStyle="transparent" disabled={formState.isSubmitting} className="m-[0 auto]">
               Entrar
             </Button>
           </form>

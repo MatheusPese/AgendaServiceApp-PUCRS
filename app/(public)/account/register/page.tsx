@@ -72,11 +72,11 @@ const Register: NextPage = () => {
               {/* Navigation buttons */}
               <div className="flex flex-row justify-between gap-2 pt-4">
               <Link href="/account/login">
-                <Button type="button" customStyle="transparent" size="small">
+                <Button type="button" customStyle="transparent" size="medium">
                     Cancelar
                 </Button>
               </Link>
-                <Button type="button" customStyle="transparent" size="small" onClick={changePage}>
+                <Button type="button" customStyle="transparent" size="medium" onClick={changePage}>
                   Avançar
                 </Button>
               </div>
@@ -94,11 +94,11 @@ const Register: NextPage = () => {
               />
               {/* Navigation buttons */}
               <div className="flex flex-row justify-between gap-2 pt-4">
-                <Button type="button" customStyle="transparent" size="small" onClick={changePage}>
+                <Button type="button" customStyle="transparent" size="medium" onClick={changePage}>
                   Voltar
                 </Button>
                 <Button
-                  type="submit" customStyle="transparent" size="small"
+                  type="submit" customStyle="transparent" size="medium"
                   disabled={formState.isSubmitting}
                 >
                   {/* Show spinner while form is submitting */}
