@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import PageTemplate from "@/app/_components/PageTemplate";
-import FloatingMenu from "@/app/_components/FloatingMenu";
+import PageTemplate from "@/app/_components/globals/PageTemplate";
+import FloatingMenu from "@/app/_components/globals/FloatingMenu";
 import BusinessItem from "@/app/_components/business-panel/BusinessItem";
-import Button from "@/app/_components/Button";
+import Button from "@/app/_components/globals/Button";
 
 export default function Home() {
   const [menuVisible, setMenuVisible] = useState(false);

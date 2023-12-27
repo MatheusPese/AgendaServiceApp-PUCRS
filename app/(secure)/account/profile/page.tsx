@@ -1,9 +1,9 @@
 'use client'
 import { useEffect, useState } from "react";
 
-import Button from "@/app/_components/Button";
-import PageTemplate from "@/app/_components/PageTemplate";
-import FloatingMenu from "@/app/_components/FloatingMenu";
+import Button from "@/app/_components/globals/Button";
+import PageTemplate from "@/app/_components/globals/PageTemplate";
+import FloatingMenu from "@/app/_components/globals/FloatingMenu";
 import CredentialCard from "@/app/_components/account/profile/CredentialCard";
 import { useUserService } from "@/app/_services";
 

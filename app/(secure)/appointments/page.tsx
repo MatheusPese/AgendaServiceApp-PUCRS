@@ -2,9 +2,9 @@
 
 import { useState }       from "react";
 
-import Button             from "@/app/_components/Button";
-import FloatingMenu       from "@/app/_components/FloatingMenu";
-import PageTemplate       from "@/app/_components/PageTemplate";
+import Button             from "@/app/_components/globals/Button";
+import FloatingMenu       from "@/app/_components/globals/FloatingMenu";
+import PageTemplate       from "@/app/_components/globals/PageTemplate";
 import AppointmentCard    from "@/app/_components/business/AppointmentCard";
 import NewAppointmentCard from "@/app/_components/business/NewAppointmentCard";
 
