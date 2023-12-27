@@ -5,8 +5,8 @@ import { useState }       from "react";
 import Button             from "@/app/_components/globals/Button";
 import FloatingMenu       from "@/app/_components/globals/FloatingMenu";
 import PageTemplate       from "@/app/_components/globals/PageTemplate";
-import AppointmentCard    from "@/app/_components/business/AppointmentCard";
-import NewAppointmentCard from "@/app/_components/business/NewAppointmentCard";
+import AppointmentCard    from "@/app/_components/agendas/agenda/AppointmentCard";
+import NewAppointmentCard from "@/app/_components/agendas/agenda/NewAppointmentCard";
 
 interface Appointment {
   _id      : string;
