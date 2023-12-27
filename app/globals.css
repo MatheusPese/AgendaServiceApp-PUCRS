@@ -29,7 +29,7 @@ html body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background: linear-gradient(
-    180deg
+    180deg,
     var(--background-start-hex),
     var(--background-middle-hex),
     var(--background-end-hex)
