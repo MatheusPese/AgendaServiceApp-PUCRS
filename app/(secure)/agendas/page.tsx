@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PageTemplate from "@/app/_components/globals/PageTemplate";
 import FloatingMenu from "@/app/_components/globals/FloatingMenu";
-import BusinessItem from "@/app/_components/business-panel/BusinessItem";
+import Agenda from "@/app/_components/business-panel/Agenda";
 import Button from "@/app/_components/globals/Button";
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
   const Body = (
     <div className="flex flex-col gap-2 w-full"> 
       {business.map((item, index) => (
-        <BusinessItem key={index}> {item} </BusinessItem>
+        <Agenda key={index}> {item} </Agenda>
       ))}
       {menuVisible && <FloatingMenu />}
     </div>
