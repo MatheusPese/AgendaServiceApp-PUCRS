@@ -1,4 +1,3 @@
-
 version: “3.8”
 services:
   mongodb:
@@ -12,17 +11,22 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
 
-  mongo-express: 
+  mongo-express:
     image: mongo-express
     container_name: ${MONGOEXPRESS_CONTAINER_NAME}
     restart: always
-    ports: 
+    ports:
       - 8081:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: password
       ME_CONFIG_MONGODB_URL: mongodb://admin:password@mongodb:27017/
 
+  nodejs:
+    image: node:20-alpine
+    container_name: nodejs
+    ports:
+      - 3000:3000
 
 volumes:
   data: {}
