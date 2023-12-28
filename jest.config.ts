@@ -21,7 +21,10 @@ const config: Config = {
 
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/mockers/",
+  ],
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\mathe\\AppData\\Local\\Temp\\jest",
