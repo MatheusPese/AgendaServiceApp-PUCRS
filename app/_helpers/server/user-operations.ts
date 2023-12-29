@@ -7,7 +7,6 @@ const User = db.User;
 
 export const userOperations  = {
     authenticate,
-    getAll,
     getById,
     getCurrent,
     create,
@@ -35,10 +34,6 @@ async function authenticate({ identifier, password }: { identifier: { phone?: st
         user: user.toJSON(),
         token
     };
-}
-
-async function getAll() {
-    return await User.find();
 }
 
 async function getById(id: string) {

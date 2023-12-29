@@ -53,9 +53,6 @@ function useUserService(): IUserService {
                 alertService.error(error);
             }
         },
-        getAll: async () => {
-            userStore.setState({ users: await fetch.get('/api/users') });
-        },
         getById: async (id) => {
             userStore.setState({ user: undefined });
             try {
@@ -68,9 +65,6 @@ function useUserService(): IUserService {
             if (!currentUser) {
                 userStore.setState({ currentUser: await fetch.get('/api/users/current') });
             }
-        },
-        create: async (user) => {
-            await fetch.post('/api/users', user);
         },
         update: async (id, params) => {
             await fetch.put(`/api/users/${id}`, params);
@@ -124,10 +118,8 @@ interface IUserService extends IUserStore {
     login: (identifier: string | { email?: string, phone?: string }, password: string) => Promise<void>,
     logout: () => Promise<void>,
     register: (user: IUser) => Promise<void>,
-    getAll: () => Promise<void>,
     getById: (id: string) => Promise<void>,
     getCurrent: () => Promise<void>,
-    create: (user: IUser) => Promise<void>,
     update: (id: string, params: Partial<IUser>) => Promise<void>,
     delete: (id: string) => Promise<void>
 }
