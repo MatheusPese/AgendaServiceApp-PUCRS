@@ -14,7 +14,7 @@ function Home() {
     const user = userService.currentUser;
     useEffect(() => {
         userService.getCurrent();
-    }, []);
+    }, [userService]);
 
     if (user) {
         redirect('/agendas')
