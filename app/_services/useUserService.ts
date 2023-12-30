@@ -6,6 +6,36 @@ import { useAlertService } from '@/app/_services';
 import { useFetch } from '@/app/_helpers/client';
 
 export { useUserService };
+export type{ IUser }
+
+//#region INTERFACES
+
+interface IUser {
+    id: string,
+    firstName: string,
+    lastName: string,
+    identifier: {email?:string, phone?:string}
+    password: string,
+    isDeleting?: boolean
+}
+
+interface IUserStore {
+    users?: IUser[],
+    user?: IUser,
+    currentUser?: IUser
+}
+
+interface IUserService extends IUserStore {
+    login: (identifier: { email?: string, phone?: string }, password: string) => Promise<void>,
+    logout: () => Promise<void>,
+    register: (user: IUser) => Promise<void>,
+    getById: (id: string) => Promise<void>,
+    getCurrent: () => Promise<void>,
+    update: (id: string, params: Partial<IUser>) => Promise<void>,
+    delete: (id: string) => Promise<void>
+}
+//#endregion
+
 
 // user state store
 const initialState = {
@@ -97,29 +127,4 @@ function useUserService(): IUserService {
     }
 };
 
-// interfaces
 
-interface IUser {
-    id: string,
-    firstName: string,
-    lastName: string,
-    identifier: {email?:string, phone?:string}
-    password: string,
-    isDeleting?: boolean
-}
-
-interface IUserStore {
-    users?: IUser[],
-    user?: IUser,
-    currentUser?: IUser
-}
-
-interface IUserService extends IUserStore {
-    login: (identifier: string | { email?: string, phone?: string }, password: string) => Promise<void>,
-    logout: () => Promise<void>,
-    register: (user: IUser) => Promise<void>,
-    getById: (id: string) => Promise<void>,
-    getCurrent: () => Promise<void>,
-    update: (id: string, params: Partial<IUser>) => Promise<void>,
-    delete: (id: string) => Promise<void>
-}
