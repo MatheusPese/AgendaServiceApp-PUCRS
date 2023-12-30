@@ -1,30 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageTemplate from "@/app/_components/globals/PageTemplate";
 import FloatingMenu from "@/app/_components/globals/FloatingMenu";
 import AgendaCard from "@/app/_components/agendas/AgendaCard";
 import Button from "@/app/_components/globals/Button";
 import Popup from "@/app/_components/globals/Popup";
+import { useAgendaService, useUserService } from "@/app/_services";
+import { useForm } from "react-hook-form";
 
 export default function Home() {
   const [menuVisible, setMenuVisible] = useState(false);
   const [newAgendaOverlay, setNewAgendaOverlay] = useState(true);
+  const agendaService = useAgendaService();
+  const userService = useUserService();
+  const {register, handleSubmit} = useForm();
+  const user = userService.currentUser;
+  useEffect(() => {
+    userService.getCurrent();
+}, [userService]);
 
-  var business = [
-    "Salão de Beleza 1",
-    "Salão de Beleza 2",
-    "Salão de Beleza 3",
-    "Salão de Beleza 1",
-    "Salão de Beleza 2"
-  ];
+
+  const fields ={
+    name: register("name", {required: "Name Required!"}),
+    ownerId: register("ownerId")
+  }
+  if (!user){
+    throw ("Error: Not logged in")
+  }
+
+  const agendas = ["Agenda 1", "Agenda 2", "Agenda 3", "Agenda 4"]
+
+  const createAgenda = async (props:any) => {
+    if (user){
+      await agendaService.create({name:props?.name, ownerId:user.id});
+    }
+    setNewAgendaOverlay(false)
+  }
+  const cancel = () => {
+    setNewAgendaOverlay(false)
+  };
 
   const MenuClick = () => {
     setMenuVisible(!menuVisible);
   };
 
   const ShowNewAgendaOverlay = () => {
-    setNewAgendaOverlay(false);
+    setNewAgendaOverlay(true);
   };
   const Header = <h2 className="text-2xl">Agendas</h2>;
 
@@ -32,17 +54,19 @@ export default function Home() {
     <div className="flex flex-col gap-2 w-full"> 
       <AgendaCard onClick={ShowNewAgendaOverlay}>+ Nova Agenda</AgendaCard>
 
-      {business.map((item, index) => (
+      {agendas.map((item, index) => (
         <AgendaCard key={index}> {item} </AgendaCard>
       ))}
 
       {menuVisible && <FloatingMenu />}
       
       {newAgendaOverlay && 
-      <Popup title="Nova Agenda">
-        <input type="text" className="form-control" placeholder="Nome" />
-      </Popup>
+
       
+      <Popup title="Nova Agenda" onConfirm={() => handleSubmit(createAgenda)()} onDeny={cancel} onSubmit={handleSubmit(createAgenda)}>
+          <input {...fields.name} type="text" className="form-control" placeholder="Nome" />
+      </Popup>
+
       }
     </div>
   );

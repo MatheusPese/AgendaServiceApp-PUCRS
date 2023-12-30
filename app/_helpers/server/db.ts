@@ -1,13 +1,17 @@
 import mongoose from 'mongoose';
 
+
 const Schema = mongoose.Schema;
 
-mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_SERVER });
+try {mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_SERVER });}
+catch (e){
+    console.log("Could not connect to database, because:\n", e)
+}
+
 mongoose.Promise = global.Promise;
 
 export const db = {
     User: userModel(),
-    Colectoin_Of_Agendas: collectionOfAgendasModel(),
     Agenda: agendaModel(),
     Appointment: appointmentModel(),
 };
@@ -36,16 +40,12 @@ function userModel() {
     return mongoose.models.User || mongoose.model('User', schema);
 }
 
-function collectionOfAgendasModel() {
-    const schema = new Schema({
-        agendas: [{ type: Schema.Types.ObjectId, ref: 'Agenda' }],
-        users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    });
-    return mongoose.models.CollectionOfAgendas || mongoose.model('CollectionOfAgendas', schema);
-}
-
 function agendaModel() {
     const schema = new Schema({
+        name: {type: String, required: true},
+        ownerId: {type: Schema.Types.ObjectId, ref:'User', required: true},
+        
+        participants:[{ type: Schema.Types.ObjectId, ref: 'User' }],
         appointments: [{ type: Schema.Types.ObjectId, ref: 'Appointment' }],
     });
     return mongoose.models.Agenda || mongoose.model('Agenda', schema);
