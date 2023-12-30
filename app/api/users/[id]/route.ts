@@ -20,14 +20,6 @@ async function update(req: Request, { params: { id } }: any) {
     await userOperations.update(id, body);
 }
 
-update.schema = joi.object({
-    firstName: joi.string(),
-    lastName: joi.string(),
-    email: joi.string(),
-    phone: joi.string(),
-    password: joi.string().min(6).allow(''),
-});
-
 async function _delete(req: Request, { params: { id } }: any) {
     await userOperations.delete(id);
 
@@ -37,3 +29,12 @@ async function _delete(req: Request, { params: { id } }: any) {
         return { deletedSelf: true };
     }
 }
+
+
+update.schema = joi.object({
+    firstName: joi.string(),
+    lastName: joi.string(),
+    email: joi.string(),
+    phone: joi.string(),
+    password: joi.string().min(6).allow(''),
+});
