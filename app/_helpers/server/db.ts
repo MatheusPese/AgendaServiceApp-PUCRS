@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-try {mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_SERVER });}
+try {mongoose.connect(process.env.MONGODB_URI!, { dbName: process.env.MONGODB_DATABASE_NAME });}
 catch (e){
     console.log("Could not connect to database, because:\n", e)
 }
