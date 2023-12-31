@@ -24,13 +24,13 @@ const Popup: React.FC<props> = ({title = "Title",confirmLabel="Confirmar", denyL
 				{children}
 				<div className="flex flex-row gap-2 m-2 ">
 				<Button type="button" customStyle="secondary" size="small" className="flex btn btn-primary" onClick={onDeny}>
-					{confirmLabel}
+					{denyLabel}
 				</Button>
 				<Button type="submit" customStyle="primary" size="small" className="flex btn btn-primary" onClick={onConfirm}>
 					{isSubmitting && (
                     		<span className="spinner-border spinner-border-sm me-1"></span>
                   		)}
-					{denyLabel}
+					{confirmLabel}
 				</Button>
 				</div>
 				
