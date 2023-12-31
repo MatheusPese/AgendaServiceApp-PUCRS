@@ -14,7 +14,7 @@ export default function Home() {
   const [newAgendaOverlay, setNewAgendaOverlay] = useState(true);
   const agendaService = useAgendaService();
   const userService = useUserService();
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, formState} = useForm();
   const user = userService.currentUser;
   useEffect(() => {
     userService.getCurrent();
@@ -63,7 +63,7 @@ export default function Home() {
       {newAgendaOverlay && 
 
       
-      <Popup title="Nova Agenda" onConfirm={() => handleSubmit(createAgenda)()} onDeny={cancel} onSubmit={handleSubmit(createAgenda)}>
+      <Popup title="Nova Agenda" confirmLabel="Criar" isSubmitting={formState.isSubmitting} onConfirm={() => handleSubmit(createAgenda)()} onDeny={cancel} onSubmit={handleSubmit(createAgenda)}>
           <input {...fields.name} type="text" className="form-control" placeholder="Nome" />
       </Popup>
 
