@@ -52,6 +52,8 @@ export default function Home() {
     }
     setNewAgendaOverlay(false)
   }
+
+
   const cancel = () => {
     setNewAgendaOverlay(false)
   };
@@ -78,7 +80,7 @@ export default function Home() {
       {newAgendaOverlay && 
 
       
-      <Popup title="Nova Agenda" confirmLabel="Criar" isSubmitting={formState.isSubmitting} onConfirm={() => handleSubmit(createAgenda)()} onDeny={cancel} onSubmit={handleSubmit(createAgenda)}>
+      <Popup title="Nova Agenda" confirmLabel="Criar" isSubmitting={formState.isSubmitting} onConfirm={() => handleSubmit(createAgenda)()} onDeny={cancel}>
           <input {...fields.name} type="text" className="form-control" placeholder="Nome" />
       </Popup>
 
