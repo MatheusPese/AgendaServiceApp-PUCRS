@@ -23,7 +23,7 @@ function Profile()  {
     useEffect(() => {
         userService.getCurrent();
 
-    }, []);
+    }, [userService]);
 
     const editName = () => {
         // Implement logic for editing name

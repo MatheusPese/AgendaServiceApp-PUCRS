@@ -2,9 +2,9 @@
 
 import { useState }       from "react";
 
-import PageTemplate       from "@/app/_components/PageTemplate";
-import Button             from "@/app/_components/Button";
-import FloatingMenu       from "@/app/_components/FloatingMenu";
+import PageTemplate       from "@/app/_components/globals/PageTemplate";
+import Button             from "@/app/_components/globals/Button";
+import FloatingMenu       from "@/app/_components/globals/FloatingMenu";
 
 
 export default function Home(){
@@ -59,7 +59,7 @@ export default function Home(){
 
       const Footer=(
             <div className="flex w-full justify-between gap-3">
-                  <Button onClick={toggleMenu}>Menu</Button>
+                  <Button type="button" size="medium" customStyle="transparent" onClick={toggleMenu}>Menu</Button>
                   
             </div>      
       );
