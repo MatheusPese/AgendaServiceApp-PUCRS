@@ -31,7 +31,7 @@ export default function Home() {
 
   // #region State and Hooks
   const [menuVisible, setMenuVisible] = useState(false);
-  const [newAgendaOverlay, setNewAgendaOverlay] = useState(true);
+  const [newAgendaOverlay, setNewAgendaOverlay] = useState(false);
 
   const {register, handleSubmit, formState} = useForm();
   const agendaService = useAgendaService();
