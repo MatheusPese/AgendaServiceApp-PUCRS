@@ -14,7 +14,8 @@ interface IUser {
     id: string,
     firstName: string,
     lastName: string,
-    identifier: {email?:string, phone?:string}
+    email?:string, 
+    phone?:string,
     password: string,
     isDeleting?: boolean
 }

@@ -52,8 +52,8 @@ function Profile()  {
         {user && (  //check if user is not null
         <div className="flex flex-col w-full h-full justify-between gap-4">
             <CredentialCard titulo='NOME' valor={`${user?.firstName} ${user?.lastName}`} onClickEdit={editName}></CredentialCard>
-            <CredentialCard titulo='E-MAIL' valor={`${user?.identifier.email}`} onClickEdit={editEmail}></CredentialCard>
-            <CredentialCard titulo='TELEFONE' valor={`${user?.identifier.phone}`} onClickEdit={editPhone}></CredentialCard>
+            <CredentialCard titulo='E-MAIL' valor={`${user?.email}`} onClickEdit={editEmail}></CredentialCard>
+            <CredentialCard titulo='TELEFONE' valor={`${user?.phone}`} onClickEdit={editPhone}></CredentialCard>
             <CredentialCard titulo='SENHA' valor='************' onClickEdit={editPassword}></CredentialCard>
             <button className="flex justify-center justify-self-end text-red-500 font-bold underline"
             onClick={() => userService.delete(user.id)}>
