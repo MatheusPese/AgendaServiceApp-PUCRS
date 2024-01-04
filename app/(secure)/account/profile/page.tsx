@@ -1,6 +1,7 @@
 'use client'
-import { useEffect, useState } from "react";
 
+import { useEffect, useState } from "react";
+import { redirect } from 'next/navigation'
 import Button from "@/app/_components/globals/Button";
 import PageTemplate from "@/app/_components/globals/PageTemplate";
 import FloatingMenu from "@/app/_components/globals/FloatingMenu";
@@ -22,8 +23,7 @@ function Profile()  {
     
     useEffect(() => {
         userService.getCurrent();
-
-    }, [userService]);
+    },[]);
 
     const editName = () => {
         // Implement logic for editing name
@@ -55,8 +55,10 @@ function Profile()  {
             <CredentialCard titulo='E-MAIL' valor={`${user?.email}`} onClickEdit={editEmail}></CredentialCard>
             <CredentialCard titulo='TELEFONE' valor={`${user?.phone}`} onClickEdit={editPhone}></CredentialCard>
             <CredentialCard titulo='SENHA' valor='************' onClickEdit={editPassword}></CredentialCard>
-            <button className="flex justify-center justify-self-end text-red-500 font-bold underline"
-            onClick={() => userService.delete(user.id)}>
+            <button type="submit" className="flex justify-center justify-self-end text-red-500 font-bold underline"
+            onClick={() => {  
+                userService.delete(user.id)
+            }}>
                 {/* TODO: ask for confirmation before deleting user*/}
                 {user.isDeleting
                     ? <span className="spinner-border spinner-border-sm"></span>
@@ -79,15 +81,22 @@ function Profile()  {
         </div>
     );
 
-    return (
-        <PageTemplate>
-            {{
-                Header,
-                Body,
-                Footer,
-            }}
-        </PageTemplate>
-    );
+    if (user){
+        return (
+            <PageTemplate>
+                {{
+                    Header,
+                    Body,
+                    Footer,
+                }}
+            </PageTemplate>
+        );
+    }
+    else{
+        return <p>loading... <span className="spinner-border spinner-border-sm me-1"></span></p>;
+    }
+
+    
 }
 
 

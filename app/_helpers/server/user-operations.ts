@@ -9,6 +9,7 @@ export const userOperations  = {
     authenticate,
     getById,
     getCurrent,
+    getAll,
     create,
     update,
     delete: _delete
@@ -72,6 +73,11 @@ async function create(params: any) {
     // save user
     await user.save();
 }
+
+async function getAll() {
+    return await User.find();
+}
+
 
 async function update(id: string, params: any) {
     const user = await User.findById(id);
