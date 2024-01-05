@@ -5,11 +5,16 @@ import { apiHandler } from '@/app/_helpers/server/api';
 
 module.exports = apiHandler({
     POST: create,
+    GET: getAll,
 });
 
 async function create(req: Request) {
     const body = await req.json();
     await agendaOperations.create(body);
+}
+
+async function getAll(){
+    return await agendaOperations.getAll();
 }
 
 const agendaSchema = joi.object({

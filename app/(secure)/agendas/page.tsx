@@ -1,8 +1,10 @@
+//path: app/(secure)/agendas/pages.tsx
 "use client";
 
 // #region Imports
 import { useEffect, useState } from "react";
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
 import { useAgendaService, useUserService } from "@/app/_services";
 import { useForm } from "react-hook-form";
 
@@ -14,19 +16,27 @@ import Button from "@/app/_components/globals/Button";
 import Popup from "@/app/_components/globals/Popup";
 
 // #endregion
-
 export default function Home() { 
   // #region CHECK IF THE USER IS LOGGED IN
+  const router = useRouter();
 
   const userService = useUserService();
-  const user = userService.currentUser;
-  useEffect(() => {
-      userService.getCurrent();
-  }, [userService]);
+  const agendaService = useAgendaService();
   
-  if (!user){
-    redirect('/')
-  }
+  const user = userService.currentUser;
+  const userAgendas = agendaService.userAgendas;
+  
+  console.log("user: ", user);
+  console.log("userAgendas: ", userAgendas);
+
+
+
+
+
+
+
+
+
   //#endregion
 
   // #region State and Hooks
@@ -34,7 +44,6 @@ export default function Home() {
   const [newAgendaOverlay, setNewAgendaOverlay] = useState(false);
 
   const {register, handleSubmit, formState} = useForm();
-  const agendaService = useAgendaService();
   
   // #endregion
 
@@ -44,14 +53,22 @@ export default function Home() {
   }
 
 
-  const agendas = ["Agenda 1", "Agenda 2", "Agenda 3", "Agenda 4"]
-
   const createAgenda = async (props:any) => {
     if (user){
-      await agendaService.create({name:props?.name, ownerId:user.id});
+      await agendaService.create({name:props.name, ownerId:user.id});
     }
     setNewAgendaOverlay(false)
   }
+
+  const renderAgendaCards = () => {
+    if (userAgendas) {
+      return userAgendas.map((item, index) => (
+        <AgendaCard key={index}>{item.name}</AgendaCard>
+      ));
+    } else {
+      return <p>Loading agendas...</p>;
+    }
+  };
 
 
   const cancel = () => {
@@ -68,23 +85,29 @@ export default function Home() {
   const Header = <h2 className="text-2xl">Agendas</h2>;
 
   const Body = (
-    <div className="flex flex-col gap-2 w-full"> 
+    <div className="flex flex-col gap-2 w-full">
       <AgendaCard onClick={ShowNewAgendaOverlay}>+ Nova Agenda</AgendaCard>
 
-      {agendas.map((item, index) => (
-        <AgendaCard key={index}> {item} </AgendaCard>
-      ))}
+      {renderAgendaCards()}
 
       {menuVisible && <FloatingMenu />}
-      
-      {newAgendaOverlay && 
 
-      
-      <Popup title="Nova Agenda" confirmLabel="Criar" isSubmitting={formState.isSubmitting} onConfirm={() => handleSubmit(createAgenda)()} onDeny={cancel}>
-          <input {...fields.name} type="text" className="form-control" placeholder="Nome" />
-      </Popup>
-
-      }
+      {newAgendaOverlay && (
+        <Popup
+          title="Nova Agenda"
+          confirmLabel="Criar"
+          isSubmitting={formState.isSubmitting}
+          onConfirm={() => handleSubmit(createAgenda)()}
+          onDeny={cancel}
+        >
+          <input
+            {...fields.name}
+            type="text"
+            className="form-control"
+            placeholder="Nome"
+          />
+        </Popup>
+      )}
     </div>
   );
 
@@ -105,5 +128,5 @@ export default function Home() {
       Body,
       Footer,
     }}</PageTemplate>
-  );
+  )
 }

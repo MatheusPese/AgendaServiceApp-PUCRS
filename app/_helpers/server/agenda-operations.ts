@@ -1,4 +1,5 @@
 import { db } from './db';
+import { headers } from 'next/headers';
 
 const Agenda = db.Agenda;
 
@@ -7,7 +8,7 @@ export const agendaOperations = {
     create,
     update,
     delete: _delete,
-
+    getAll,
     removeParticipant,
 
 }
@@ -32,6 +33,17 @@ async function update (id: string, params:any){
 
     // save agenda to database
     await agenda.save();
+}
+
+async function getAll(){
+    try{
+        const currentUserId = headers().get('userId');
+        const userAgendas = await Agenda.find({ownerId:currentUserId});
+        return userAgendas;
+
+    } catch(e) {
+        throw `No agendas where found due to error: \n ${e}`;
+    }
 }
 
 async function removeParticipant(id:string, participant:any) {
