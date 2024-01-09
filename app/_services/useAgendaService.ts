@@ -24,7 +24,7 @@ interface IAgendaService extends IAgendaStore{
     update: (id:string, params: Partial<IAgenda>) => Promise<void>;
     delete: (id:string) => Promise<void>;
     removeParticipant: (id:string, participantId: string) => Promise<void>;
-    getAll: () => Promise<void>;
+    getCurrentUserAgendas: () => Promise<void>;
 }
 
 const initialState ={
@@ -55,11 +55,11 @@ function useAgendaService(): IAgendaService{
             router.push('/');
         },
 
-        getAll: async () => {
+        getCurrentUserAgendas: async () => {
             console.log("trying to fetch agendas from server...")
 
             try {
-                agendaStore.setState({ userAgendas: await fetch.get(`/api/agendas/`) });
+                agendaStore.setState({ userAgendas: await fetch.get(`/api/agendas/user/current`) });
                 console.log("fetch completed\n", "useAgendas:\n", agendaStore.getState().userAgendas) 
                 router.push('/');
                 

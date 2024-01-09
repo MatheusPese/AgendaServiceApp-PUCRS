@@ -5,6 +5,7 @@ import { apiHandler } from '@/app/_helpers/server/api';
 
 module.exports = apiHandler({
     POST: create,
+    GET: getCurrentUserAgendas,
 });
 
 async function create(req: Request) {
@@ -12,6 +13,9 @@ async function create(req: Request) {
     await agendaOperations.create(body);
 }
 
+async function getCurrentUserAgendas(){
+    return await agendaOperations.getCurrentUserAgendas();
+}
 
 const agendaSchema = joi.object({
     name: joi.string().required(),

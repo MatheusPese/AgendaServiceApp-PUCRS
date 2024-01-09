@@ -4,10 +4,15 @@ import { agendaOperations } from '@/app/_helpers/server';
 import { apiHandler } from '@/app/_helpers/server/api';
 
 module.exports = apiHandler({
+    GET: getById,
     PUT: update,
     DELETE: _delete
 });
 
+
+async function getById(req: Request, { params: { id } }: any){
+    return await agendaOperations.getById(id)
+}
 async function update(req: Request,  { params: { id } }:any){
       const body = await req.json();
       await agendaOperations.update(id, body);

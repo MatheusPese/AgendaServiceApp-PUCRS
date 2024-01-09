@@ -48,6 +48,15 @@ function agendaModel() {
         participants:[{ type: Schema.Types.ObjectId, ref: 'User' }],
         appointments: [{ type: Schema.Types.ObjectId, ref: 'Appointment' }],
     });
+
+    schema.set('toJSON', {
+        virtuals: true,
+        versionKey: false,
+
+        transform: function (doc, ret) {
+            delete ret._id;
+        }
+    });
     return mongoose.models.Agenda || mongoose.model('Agenda', schema);
 }
 

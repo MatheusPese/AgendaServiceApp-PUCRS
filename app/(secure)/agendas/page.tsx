@@ -55,7 +55,7 @@ export default function Home() {
   const createAgenda = async (props:any) => {
     if (user){
       await agendaService.create({name:props.name, ownerId:user.id});
-      await agendaService.getAll();
+      await agendaService.getCurrentUserAgendas();
     }
     setNewAgendaOverlay(false)
   }

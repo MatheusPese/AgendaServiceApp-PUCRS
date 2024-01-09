@@ -8,7 +8,8 @@ export const agendaOperations = {
     create,
     update,
     delete: _delete,
-    getAll,
+    getById,
+    getCurrentUserAgendas,
     removeParticipant,
 
 }
@@ -35,7 +36,15 @@ async function update (id: string, params:any){
     await agenda.save();
 }
 
-async function getAll(){
+async function getById(id: string) {
+    try {
+        return await Agenda.findById(id);
+    } catch {
+        throw 'Agenda Not Found';
+    }
+}
+
+async function getCurrentUserAgendas(){
     try{
         const currentUserId = headers().get('userId');
         const userAgendas = await Agenda.find({ownerId:currentUserId});

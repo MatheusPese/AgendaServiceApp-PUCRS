@@ -23,7 +23,7 @@ function Home() {
 
   useEffect(()=>{
     const fetchData = async () => {
-      await agendaService.getAll();
+      await agendaService.getCurrentUserAgendas();
     }
   
     fetchData().then(
