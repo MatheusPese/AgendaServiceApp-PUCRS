@@ -44,14 +44,14 @@ function useAgendaService(): IAgendaService{
         userAgendas,
         agenda,
         create: async (params:any) => {
-            await fetch.post(`/api/agendas/`, params);
+            await fetch.post(`/api/agenda/`, params);
             router.push('/');
         },
         update: async (id:string, params: Partial<IAgenda>) => {
-            await fetch.put(`/api/agendas/${id}`, params);
+            await fetch.put(`/api/agenda/${id}`, params);
         },
         delete: async (id:string) => {
-            await fetch.delete(`/api/agendas/${id}`);
+            await fetch.delete(`/api/agenda/${id}`);
             router.push('/');
         },
 
@@ -69,7 +69,7 @@ function useAgendaService(): IAgendaService{
         },
         
         removeParticipant: async (id:string, participantId: string) => {
-            await fetch.delete(`/api/agendas/${id}/participants/${participantId}`);
+            await fetch.delete(`/api/agenda/${id}/participant/${participantId}`);
         }
     }
 }
