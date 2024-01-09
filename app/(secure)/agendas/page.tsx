@@ -62,6 +62,7 @@ export default function Home() {
 
   const renderAgendaCards = () => {
     if (userAgendas) {
+      userAgendas.sort((a, b) => a.name.localeCompare(b.name));
       return userAgendas.map((item, index) => (
         <AgendaCard key={index}>{item.name}</AgendaCard>
       ));
