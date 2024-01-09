@@ -64,12 +64,31 @@ export default function Home() {
     if (userAgendas) {
       userAgendas.sort((a, b) => a.name.localeCompare(b.name));
       return userAgendas.map((item, index) => (
-        <AgendaCard key={index}>{item.name}</AgendaCard>
+        <AgendaCard onClickDelete={() => onClickDeleteAgenda(item.id)} buttonType="view" key={index} agendaName={item.name}/>
       ));
-    } else {
-      return <p>Loading agendas...</p>;
     }
   };
+
+
+  const onClickDeleteAgenda = (id:string) => {
+    console.log(id);
+    // TODO: Remove window.confirm after creating a proper dialog overlay.
+    const confirmDelete = window.confirm("Tem certeza que deseja deletar?");
+
+    if (confirmDelete){
+      deleteAgenda(id)
+    }
+
+  };
+
+
+const deleteAgenda = async (id:string) => {
+  if (user) {
+    await agendaService.delete(id);
+    await agendaService.getCurrentUserAgendas();
+  }
+}
+
 
 
   const cancel = () => {
@@ -88,7 +107,7 @@ export default function Home() {
 
   const Body = (
     <div className="flex flex-col gap-2 w-full">
-      <AgendaCard onClick={ShowNewAgendaOverlay}>+ Nova Agenda</AgendaCard>
+      <AgendaCard buttonType="create" onClickCreate={ShowNewAgendaOverlay}/>
 
       {renderAgendaCards()}
 
