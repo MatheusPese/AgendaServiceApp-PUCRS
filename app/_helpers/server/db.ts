@@ -47,8 +47,9 @@ function agendaModel() {
         
         participants:[{ type: Schema.Types.ObjectId, ref: 'User' }],
         appointments: [{ type: Schema.Types.ObjectId, ref: 'Appointment' }],
+    }, {
+        timestamps: true
     });
-
     schema.set('toJSON', {
         virtuals: true,
         versionKey: false,

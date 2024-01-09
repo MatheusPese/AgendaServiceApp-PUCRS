@@ -63,9 +63,18 @@ export default function Home() {
   const renderAgendaCards = () => {
     if (userAgendas) {
       userAgendas.sort((a, b) => a.name.localeCompare(b.name));
-      return userAgendas.map((item, index) => (
-        <AgendaCard onClickDelete={() => onClickDeleteAgenda(item.id)} buttonType="view" key={index} agendaName={item.name}/>
-      ));
+      return userAgendas.map((item, index) => {
+        console.log("item: ", item);
+        console.log("agendaId:", item.id); // Log the agendaId
+        return (
+          <AgendaCard
+            onClickDelete={() => onClickDeleteAgenda(item.id)}
+            buttonType="view"
+            key={index}
+            agendaName={item.name}
+          />
+        );
+      });
     }
   };
 
