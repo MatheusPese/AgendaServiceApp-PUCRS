@@ -16,13 +16,14 @@ interface Appointment {
   services : string[];
 }
 
-export default function Home() {
+export default function Home({params: {id}}:any) {
   
   const [menuVisible, setMenuVisible] = useState(false);
   
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
   };
+  
   
   let appointments = [
     {
