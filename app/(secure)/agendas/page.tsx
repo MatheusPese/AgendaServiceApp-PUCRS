@@ -3,7 +3,8 @@
 
 // #region Imports
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter, redirect } from 'next/navigation';
+
 
 import { useAgendaService, useUserService } from "@/app/_services";
 import { useForm } from "react-hook-form";
@@ -17,7 +18,6 @@ import Popup from "@/app/_components/globals/Popup";
 
 // #endregion
 export default function Home() { 
-  // #region CHECK IF THE USER IS LOGGED IN
   const router = useRouter();
 
   const userService = useUserService();
@@ -26,26 +26,25 @@ export default function Home() {
   const user = userService.currentUser;
   const userAgendas = agendaService.userAgendas;
   
-  console.log("user: ", user);
-  console.log("userAgendas: ", userAgendas);
-
-
-
-
-
-
-
-
-
-  //#endregion
 
   // #region State and Hooks
+
   const [menuVisible, setMenuVisible] = useState(false);
   const [newAgendaOverlay, setNewAgendaOverlay] = useState(false);
 
   const {register, handleSubmit, formState} = useForm();
   
   // #endregion
+  
+
+  if (!user){
+    redirect('/')
+  }
+
+  console.log("user: ", user);
+  console.log("userAgendas: ", userAgendas);
+
+
 
   const fields ={
     name: register("name", {required: "Name Required!"}),
@@ -56,6 +55,7 @@ export default function Home() {
   const createAgenda = async (props:any) => {
     if (user){
       await agendaService.create({name:props.name, ownerId:user.id});
+      await agendaService.getAll();
     }
     setNewAgendaOverlay(false)
   }
@@ -80,6 +80,7 @@ export default function Home() {
   };
 
   const ShowNewAgendaOverlay = () => {
+
     setNewAgendaOverlay(true);
   };
   const Header = <h2 className="text-2xl">Agendas</h2>;

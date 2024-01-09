@@ -45,14 +45,14 @@ function useAgendaService(): IAgendaService{
         agenda,
         create: async (params:any) => {
             await fetch.post(`/api/agendas/`, params);
-            router.push('/agendas');
+            router.push('/');
         },
         update: async (id:string, params: Partial<IAgenda>) => {
             await fetch.put(`/api/agendas/${id}`, params);
         },
         delete: async (id:string) => {
             await fetch.delete(`/api/agendas/${id}`);
-            router.push('/agendas');
+            router.push('/');
         },
 
         getAll: async () => {
@@ -61,7 +61,7 @@ function useAgendaService(): IAgendaService{
             try {
                 agendaStore.setState({ userAgendas: await fetch.get(`/api/agendas/`) });
                 console.log("fetch completed\n", "useAgendas:\n", agendaStore.getState().userAgendas) 
-                router.push('/agendas');
+                router.push('/');
                 
             } catch (error) {
                 console.log('Error fetching user agendas from server:\n', error);
