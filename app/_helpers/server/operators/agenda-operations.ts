@@ -1,4 +1,4 @@
-import { db } from './db';
+import { db } from '../db';
 import { headers } from 'next/headers';
 
 const Agenda = db.Agenda;

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { headers } from 'next/headers';
-import { db } from './db';
+import { db } from '../db';
 
 const User = db.User;
 

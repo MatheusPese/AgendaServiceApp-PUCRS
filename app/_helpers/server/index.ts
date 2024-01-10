@@ -1,4 +1,5 @@
 export * from './auth';
 export * from './db';
-export * from './user-operations';
-export * from './agenda-operations';
+export * from './operators/user-operations';
+export * from './operators/agenda-operations';
+export * from './operators/appointment-operations';
