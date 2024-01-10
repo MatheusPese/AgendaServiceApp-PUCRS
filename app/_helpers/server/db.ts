@@ -63,10 +63,11 @@ function agendaModel() {
 
 function appointmentModel() {
     const schema = new Schema({
+        agendaId: {type: Schema.Types.ObjectId, ref: "Agenda", required: true}, 
         time: { type: String },
         employee: { type: String },
         client: { type: String },
-        services: { type: [String] },
+        service: { type: String },
     });
     return mongoose.models.Appointment || mongoose.model('Appointment', schema);
 }
