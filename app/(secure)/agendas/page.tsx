@@ -82,7 +82,7 @@ export default function Home() {
   const onClickDeleteAgenda = (id:string) => {
     console.log(id);
     // TODO: Remove window.confirm after creating a proper dialog overlay.
-    const confirmDelete = window.confirm("Tem certeza que deseja deletar?");
+    const confirmDelete = window.confirm("Tem certeza que deseja deletar?\nTodos os dados da agenda serão perdidos para sempre");
 
     if (confirmDelete){
       deleteAgenda(id)
