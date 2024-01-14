@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 interface ButtonProps {
-  bodyText: string;
+  children: React.ReactNode
   onClick?: () => void;
   className?: string; // Add className prop
   cardType?: "square" | "rect";
@@ -10,32 +10,30 @@ interface ButtonProps {
 }
 
 
-const DataCard: React.FC<ButtonProps> = ({ title="title",  onClick, cardType = "square", className = "", bodyText, footer="" }) => {
-    let aspectRatio = "aspect-square";
+const DataCard: React.FC<ButtonProps> = ({ title="title",  onClick, cardType = "square", className = "", children, footer="" }) => {
     let col_span = "col-span-1"
     let warning = ""
     if (cardType !== "square"){
-        aspectRatio = "aspect-[2/1]";
         col_span = "col-span-2"
     }
 
-    if (bodyText === ""){
+    if (!children){
       warning = "border-red-500 border-2"
     }
 
     return (
-          <button className={`
-            ${className} ${warning} ${aspectRatio} ${col_span}
+          <div className={`
+            ${className} ${warning} ${col_span}
             flex flex-col justify-between items-center
-            bg-[rgb(255,255,255)]  rounded-2xl text-left text-black
+            bg-[rgb(255,255,255)]  rounded-2xl text-left text-black w-full h-full p-4
           `} 
           onClick={onClick}>
-            <div className='flex items-center justify-center font-bold'>
+            <div className='flex items-center justify-center font-bold w-full'>
               {title}
             </div>
-            <div className='flex items-center justify-center'>{bodyText}</div>
-            <div>{footer}</div>
-          </button>
+            <div className='w-full'>{children}</div>
+            <div className="w-full">{footer}</div>
+          </div>
         );
 
 };
