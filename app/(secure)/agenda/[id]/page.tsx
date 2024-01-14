@@ -116,7 +116,6 @@ const openAppointment = (appointment:any) => {
   const Footer = (
     <div className="flex w-full justify-between gap-3">
       <Button type="button" customStyle="transparent" size="medium" onClick={toggleMenu}>Menu</Button>
-      <Button type="button" customStyle="transparent" size="medium" >Compartilhar</Button>
     </div>
   );
   

@@ -151,9 +151,6 @@ const deleteAgenda = async (id:string) => {
       <Button size="large" type="button" customStyle="transparent" onClick={MenuClick}>
         Menu
       </Button>
-      <Button size="large" type="button" customStyle="transparent">
-        Compartilhar
-      </Button>
     </div>
   );
 
