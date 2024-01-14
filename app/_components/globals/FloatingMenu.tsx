@@ -34,4 +34,5 @@ const FloatingMenu: React.FC = () => {
     );
 }
 
+export {FloatingMenu};
 export default FloatingMenu;

@@ -26,4 +26,5 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
   );
 };
 
+export {PageTemplate};
 export default PageTemplate;

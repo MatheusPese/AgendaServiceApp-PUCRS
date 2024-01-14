@@ -1,6 +1,7 @@
 // Export Globals
-export * from './globals/Button'
 export * from './globals/FloatingMenu'
+export * from './globals/Popup'
+export * from './globals/Button'
 export * from './globals/PageTemplate'
 
 // Export from account route

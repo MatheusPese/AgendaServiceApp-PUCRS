@@ -54,4 +54,5 @@ const Button: React.FC<Props> = ({ buttonText = "", customStyle, size="small", t
   );
 };
 
+export {Button}
 export default Button;

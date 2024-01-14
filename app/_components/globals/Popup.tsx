@@ -39,4 +39,5 @@ const Popup: React.FC<props> = ({title = "Title", confirmLabel="Confirmar", deny
 	);
 }
 
+export {Popup}
 export default Popup;
