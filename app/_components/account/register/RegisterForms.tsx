@@ -49,24 +49,28 @@ const RegisterForms: FunctionComponent<ProfileProps & PasswordProps> = (
         <div className="flex flex-col gap-3">
           <input
             {...firstName}
+            autocomplete="given-name"
             type="text"
             placeholder="Nome"
             className="text-black form-control"
           />
           <input
             {...lastName}
+            autocomplete="family-name"
             type="text"
             placeholder="Sobrenome"
             className="text-black form-control"
           />
           <input
             {...email}
+            autoComplete="email"
             type="email"
             placeholder="E-mail"
             className="text-black form-control"
           />
           <input
             {...phone}
+            autoComplete="tel"
             type="tel"
             placeholder="Telefone"
             className="text-black form-control"
@@ -78,6 +82,7 @@ const RegisterForms: FunctionComponent<ProfileProps & PasswordProps> = (
           <input 
             {...password}
             value={passwordValue}
+            autoComplete="new-password"
             onChange={({ target }) => {
               handlePasswordChange(target.value);
             }}
@@ -87,6 +92,7 @@ const RegisterForms: FunctionComponent<ProfileProps & PasswordProps> = (
           />
           <input
             {...confirmPassword}
+            autoComplete="new-password"
             value={confirmPasswordValue}
             onChange={({ target }) => {
               handlePasswordChange(target.value, true);
