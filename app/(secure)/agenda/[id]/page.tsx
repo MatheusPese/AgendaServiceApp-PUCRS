@@ -57,7 +57,7 @@ export default function Home({params: {id}}:any) {
 const openAppointment = (appointment:any) => {
   
   console.log("Testando o appointment: ", appointment);
-  const url = `/appointment/${appointment.id}`
+  const url = `/appointment/view/${appointment.id}`
   router.push( url );
 };
 

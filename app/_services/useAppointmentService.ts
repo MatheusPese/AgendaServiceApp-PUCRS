@@ -17,6 +17,7 @@ export interface IAppointment {
   service: string;
   timeDue: Date;
   employee: IUser | string; //accepts string in case employee does not have an associated account
+  isDeleting?: boolean;
 }
 
 interface IAppointmentStore {
@@ -24,12 +25,13 @@ interface IAppointmentStore {
   currentAppointment?: IAppointment;
   currentAgendaAppointments?: IAppointment[];
   appointment?: IAppointment;
+  
 }
 
 interface IAppointmentService extends IAppointmentStore {
   create: (params: Partial<IAppointment>) => Promise<void>;
   update: (id: string, params: Partial<IAppointment>) => Promise<void>;
-  delete: (id: string) => Promise<void>;
+  delete: (id: string, agendaId:string) => Promise<void>;
   getAppointment: (id: string) => Promise<IAppointment | null>;
   getCurrentAgendaAppointments: (agendaId:string) => Promise < IAppointment[] | null>; 
 }
@@ -61,8 +63,15 @@ function useAppointmentService(): IAppointmentService {
     update: async (id: string, params: Partial<IAppointment>) => {
       await fetch.put(`/api/appointment/${id}`, params);
     },
-    delete: async (id: string) => {
+    delete: async (id: string, agendaId:string) => {
+      // set isDeleting prop to true on appointment
+      appointmentStore.setState({
+        appointment: { ...appointment!, isDeleting: true },
+      });
+
       await fetch.delete(`/api/appointment/${id}`);
+
+      router.push(`/agenda/${agendaId}`)
     },
 
     getAppointment: async (id: string) => {
