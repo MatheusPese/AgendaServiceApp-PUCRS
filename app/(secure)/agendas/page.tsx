@@ -45,7 +45,6 @@ export default function Home() {
   console.log("userAgendas: ", userAgendas);
 
 
-
   const fields ={
     name: register("name", {required: "Name Required!"}),
     ownerId: register("ownerId")
@@ -69,6 +68,7 @@ export default function Home() {
         return (
           <AgendaCard
             onClickDelete={() => onClickDeleteAgenda(item.id)}
+            onClickOpen={()=> onClickOpenAgenda(item.id)}
             buttonType="view"
             key={index}
             agendaName={item.name}
@@ -78,6 +78,12 @@ export default function Home() {
     }
   };
 
+  const onClickOpenAgenda = (id: string) => {
+    const url = "/agenda/"+ id + "/"
+    console.log( url )
+    router.push( url );
+
+  }
 
   const onClickDeleteAgenda = (id:string) => {
     console.log(id);
@@ -97,7 +103,6 @@ const deleteAgenda = async (id:string) => {
     await agendaService.getCurrentUserAgendas();
   }
 }
-
 
 
   const cancel = () => {
