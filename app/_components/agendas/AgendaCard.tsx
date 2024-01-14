@@ -5,12 +5,13 @@ interface ButtonProps {
   agendaName?: string;
   onClickCreate?: () => void;
   onClickDelete?: () => void;
+  onClickOpen?: () => void;
   className?: string; // Add className prop
   buttonType: "create" | "view";
 
 }
 
-const AgendaCard: React.FC<ButtonProps> = ({ agendaName, onClickCreate, onClickDelete, className = "", buttonType }) => {
+const AgendaCard: React.FC<ButtonProps> = ({ agendaName, onClickCreate, onClickOpen, onClickDelete, className = "", buttonType }) => {
   return (
     <div className={`${className} flex flex-row justify-between flex-1 w-full justify-center bg-[rgba(0,0,0,0.3)] text-left`}>
       
@@ -21,7 +22,7 @@ const AgendaCard: React.FC<ButtonProps> = ({ agendaName, onClickCreate, onClickD
       )}
 
       {buttonType === "view" && (
-        <button title={`Abrir Agenda "${agendaName}"`} type="button" className="flex flex-1 justify-start p-5">
+        <button title={`Abrir Agenda "${agendaName}"`} type="button" className="flex flex-1 justify-start p-5" onClick={onClickOpen}>
           {agendaName}
         </button>
       )}

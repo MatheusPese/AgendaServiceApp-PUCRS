@@ -9,6 +9,7 @@ export const appointmentOperations = {
     update,
     delete: _delete,
     getById,
+    getCurrentAgendaAppointments,
 
 }
 
@@ -42,14 +43,19 @@ async function getById(id: string) {
     }
 }
 
-async function getAgendaAppointments(){
+async function getCurrentAgendaAppointments(agendaId:string){
     try{
-        const agendaId = headers().get('userId');
-        const agendaAppointments = await Appointment.find({ownerId:agendaId});
+        const agendaAppointments = await Appointment.find({agendaId:agendaId});
         return agendaAppointments;
 
     } catch(e) {
-        throw `No appointments where found due to error: \n ${e}`;
+        return {
+            request: { agendaId: agendaId },
+            message: 'Error finding appointments with provided agendaId',
+            statusCode: 500,
+            error: e,
+        };
+        
     }
 }
 

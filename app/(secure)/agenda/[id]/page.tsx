@@ -1,42 +1,66 @@
 "use client";
 
-import { useEffect, useState }       from "react";
+import { useEffect, useState } from "react";
+import { useRouter, redirect } from 'next/navigation';
 
+// import componnents
 import Button             from "@/app/_components/globals/Button";
 import FloatingMenu       from "@/app/_components/globals/FloatingMenu";
 import PageTemplate       from "@/app/_components/globals/PageTemplate";
 import AppointmentCard    from "@/app/_components/agendas/agenda/AppointmentCard";
 import NewAppointmentCard from "@/app/_components/agendas/agenda/NewAppointmentCard";
-import { IUser, useAgendaService } from "@/app/_services";
 
-interface Appointment {
-  _id      : string;
-  time     : string;
-  employee : string | IUser;
-  client   : string;
-  service : string;
-}
+//import services
+import { useAgendaService, useAppointmentService } from "@/app/_services";
+
+//import interfaces
+import { IAppointment, IUser, IAgenda } from "@/app/_services";
 
 export default function Home({params: {id}}:any) {
-  
-  
+  const router = useRouter();
+
+  const appointmentService = useAppointmentService();
   const agendaService = useAgendaService();
   const [loading, setLoading] = useState(true);
+  const [appointments, setAppointments] = useState<IAppointment[]>([]);
+  const [agenda, setAgenda] = useState<IAgenda|null>(null);
+
   
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [agendaData, appointmentsData] = await Promise.all([
+          agendaService.getAgenda(id),
+          appointmentService.getCurrentAgendaAppointments(id),
+        ]);  
+        if (appointmentsData && agendaData){
+          setAppointments(appointmentsData);
+          setAgenda(agendaData)
 
-    const fetchData = async () =>{
-      await agendaService.getAgenda(id);
-    }
-    fetchData().then(() =>{
+        }
+      } catch (error) {
+
+      } finally {
         setLoading(false);
-    })
+      }
+    };
+  
+    fetchData();
   }, []);
 
-  const agenda = agendaService.currentAgenda;
+  const createAppointment = () => {
+    const url = `/appointment/new?agendaId=${id}`
+    router.push( url );
 
+  }
 
+const openAppointment = (appointment:any) => {
   
+  console.log("Testando o appointment: ", appointment);
+  const url = `/appointment/${appointment.id}`
+  router.push( url );
+};
+
 
   const [menuVisible, setMenuVisible] = useState(false);
   
@@ -46,69 +70,43 @@ export default function Home({params: {id}}:any) {
   
 
   const renderAppointments = () =>{
-    if (agenda){
-      agenda.appointments.sort((a, b) => b.timeDue.getTime() - a.timeDue.getTime());
+    if (appointments){
+      appointments.forEach(appointment => {
+        appointment.timeDue = new Date(appointment.timeDue);
+      });
 
-      return agenda.appointments.map((appointment, index) => (
+      appointments.sort((a, b) => { 
+      console.log("a.timeDue type:", typeof a.timeDue);
+      console.log("b.timeDue type:", typeof b.timeDue);
+        
+        return b.timeDue.getTime() - a.timeDue.getTime();
+
+      });
+
+      return appointments.map((appointment, index) => (
         <AppointmentCard
           key      = {index}
           timeDue  = {appointment.timeDue}
           employee = {appointment.employee}
           client   = {appointment.client}
           service  = {appointment.service}
+          onClick={() => openAppointment(appointment)}
         />
       ))
     }
   }
   
-  // let appointments = [
-  //   {
-  //     _id: '1',
-  //     employee: 'Alice Silva',
-  //     client: 'João Oliveira',
-  //     time: new Date('2023-12-22T10:00:00'),
-  //     service: 'Depilação',
-  //   },
-  //   {
-  //     _id: '2',
-  //     employee: 'Carlos Santos',
-  //     client: 'Joana Alcatra Acelva de Assis Vieira',
-  //     time: new Date('2023-12-22T11:30:00'),
-  //     service: "Pé",
-  //   },
-  //   {
-  //     _id: '3',
-  //     employee: 'Fernanda Lima',
-  //     client: 'Pedro Rocha',
-  //     time: new Date('2023-12-22T13:15:00'),
-  //     service: "Maquiagem"
-  //   },
-  //   {
-  //     _id: '4',
-  //     employee: 'Gabriel Oliveira',
-  //     client: 'Juliana Costa',
-  //     time: new Date('2023-12-22T15:00:00'),
-  //     service: 'Barba',
-  //   },
-  //   {
-  //     _id: '5',
-  //     employee: 'Larissa Silva',
-  //     client: 'Lucas Santos',
-  //     time: new Date('2023-12-22T16:45:00'),
-  //     service: 'Manicure',
-  //   },
-  // ];
-  
+
 
   
-  const Header = <h2 className="text-2xl">Negócios</h2>;
+  const Header = <h2 className="text-2xl">Compromissos</h2>;
   
   const Body = (
     <div className="grid gap-3 align-content-around justify-content-between content-around justify-around grid-cols-3 p-3">
       
-      <NewAppointmentCard />
+      <NewAppointmentCard onClick={createAppointment}/>
       
-      {/*TODO: add render for appointments here */}
+      {renderAppointments()}
 
       {menuVisible && <FloatingMenu />}
     

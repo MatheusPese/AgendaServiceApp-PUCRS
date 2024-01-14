@@ -9,7 +9,7 @@ export { useAgendaService };
 
 import { IAppointment } from './useAppointmentService';
 
-interface IAgenda {
+export interface IAgenda {
   id: string;
   name: string;
   ownerId: string;
