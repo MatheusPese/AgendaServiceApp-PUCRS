@@ -64,10 +64,18 @@ function agendaModel() {
 function appointmentModel() {
     const schema = new Schema({
         agendaId: {type: Schema.Types.ObjectId, ref: "Agenda", required: true}, 
-        time: { type: String },
+        timeDue: { type: Date },
         employee: { type: String },
         client: { type: String },
         service: { type: String },
+    });
+    schema.set('toJSON', {
+        virtuals: true,
+        versionKey: false,
+
+        transform: function (doc, ret) {
+            delete ret._id;
+        }
     });
     return mongoose.models.Appointment || mongoose.model('Appointment', schema);
 }
