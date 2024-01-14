@@ -20,7 +20,9 @@ export interface IAppointment {
 }
 
 interface IAppointmentStore {
+  agendaAppointment?: IAppointment;
   currentAppointment?: IAppointment;
+  currentAgendaAppointments?: IAppointment[];
   appointment?: IAppointment;
 }
 
@@ -29,10 +31,13 @@ interface IAppointmentService extends IAppointmentStore {
   update: (id: string, params: Partial<IAppointment>) => Promise<void>;
   delete: (id: string) => Promise<void>;
   getAppointment: (id: string) => Promise<IAppointment | null>;
+  getCurrentAgendaAppointments: (agendaId:string) => Promise < IAppointment[] | null>; 
 }
 
 const initialState = {
+  agendaAppointment: undefined,
   currentAppointment: undefined,
+  currentAgendaAppointments: undefined,
   appointment: undefined,
 };
 
@@ -42,13 +47,16 @@ function useAppointmentService(): IAppointmentService {
   const fetch = useFetch();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { currentAppointment, appointment } = appointmentStore();
+  const { agendaAppointment, currentAppointment, currentAgendaAppointments, appointment } = appointmentStore();
 
   return {
+    agendaAppointment,
     currentAppointment,
     appointment,
     create: async (params: any) => {
       await fetch.post(`/api/appointment/`, params);
+      router.push(`/agenda/${params.agendaId}`);
+
     },
     update: async (id: string, params: Partial<IAppointment>) => {
       await fetch.put(`/api/appointment/${id}`, params);
@@ -69,5 +77,23 @@ function useAppointmentService(): IAppointmentService {
         return null; // Return null in case of an error
       }
     },
+
+    getCurrentAgendaAppointments: async (agendaId: string) => {
+        
+      try {
+        console.log("fetching agenda appointments")
+        const fetchedAppointments = await fetch.get(`/api/appointments/agenda/${agendaId}`);
+        if (fetchedAppointments !== currentAgendaAppointments) {
+          
+          appointmentStore.setState({ currentAgendaAppointments: fetchedAppointments });
+          console.log("feched appointments: " , appointmentStore.getState().currentAgendaAppointments)
+        } 
+        return fetchedAppointments;
+
+      } catch (error) {
+        console.log('Error fetching appointments from server:', error);
+        return null; // Return null in case of an error
+      }
+    }
   };
 }

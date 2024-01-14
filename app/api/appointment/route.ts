@@ -19,7 +19,7 @@ const appointmentSchema = joi.object({
       client: joi.string().required(),
       service: joi.string().required(),
       employee: joi.string().required(),
-      time: joi.string().required(),
+      timeDue: joi.date().required(),
 });
 
 create.schema = appointmentSchema;
