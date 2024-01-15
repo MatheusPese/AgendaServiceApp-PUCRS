@@ -62,6 +62,7 @@ function useAppointmentService(): IAppointmentService {
     },
     update: async (id: string, params: Partial<IAppointment>) => {
       await fetch.put(`/api/appointment/${id}`, params);
+      router.push(`/agenda/${params.agendaId}`)
     },
     delete: async (id: string, agendaId:string) => {
       // set isDeleting prop to true on appointment

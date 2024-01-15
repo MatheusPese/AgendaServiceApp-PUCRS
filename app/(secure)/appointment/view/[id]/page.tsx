@@ -117,14 +117,6 @@ export default function Home({ params: { id } }: any) {
 
             </div>
 
-            
-
-
-            
-
-
-
-
             <button type="submit" className="flex justify-center justify-self-end text-red-500 font-bold underline"
                   onClick={() => onClickDeleteAppointment(id)}>
                   

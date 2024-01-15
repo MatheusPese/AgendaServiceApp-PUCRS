@@ -22,9 +22,13 @@ async function _delete(req: Request,  { params: { id } }:any) {
       await appointmentOperations.delete(id);
 }
 
-const agendaSchema = joi.object({
-    name: joi.string().required(),
-    participants: joi.array().items(joi.string()),
+const appointmentSchema = joi.object({
+    agendaId: joi.string().required(),
+    
+    client: joi.string().required(),
+    service: joi.string().required(),
+    employee: joi.string().required(),
+    timeDue: joi.date().required(),
 });
 
-update.schema = agendaSchema;
+update.schema = appointmentSchema;
