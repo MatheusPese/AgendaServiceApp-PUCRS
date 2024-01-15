@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { redirect } from 'next/navigation'
 import Button from "@/app/_components/globals/Button";
 import PageTemplate from "@/app/_components/globals/PageTemplate";
-import FloatingMenu from "@/app/_components/globals/FloatingMenu";
+import NavigationMenu from "@/app/_components/globals/NavigationMenu";
 import CredentialCard from "@/app/_components/account/profile/CredentialCard";
 import { useUserService } from "@/app/_services";
 
@@ -67,7 +67,7 @@ function Profile()  {
             </button>
         </div>)}
         {menuVisible && (
-                <FloatingMenu />
+                <NavigationMenu />
             )}
         </>
     );

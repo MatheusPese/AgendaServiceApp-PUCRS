@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useUserService } from "../../_services";
 
-const FloatingMenu: React.FC = () => {
+const NavigationMenu: React.FC = () => {
     const  userService = useUserService();
     const router = useRouter();
 
@@ -34,5 +34,5 @@ const FloatingMenu: React.FC = () => {
     );
 }
 
-export {FloatingMenu};
-export default FloatingMenu;
+export {NavigationMenu};
+export default NavigationMenu;

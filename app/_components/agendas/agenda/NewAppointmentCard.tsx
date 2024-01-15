@@ -16,4 +16,5 @@ const NewAppointmentCard: React.FC<Props> = ({onClick}) => {
   );
 };
 
+export { NewAppointmentCard}
 export default NewAppointmentCard;

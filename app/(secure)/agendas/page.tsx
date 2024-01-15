@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 
 
 import PageTemplate from "@/app/_components/globals/PageTemplate";
-import FloatingMenu from "@/app/_components/globals/FloatingMenu";
+import NavigationMenu from "@/app/_components/globals/NavigationMenu";
 import AgendaCard from "@/app/_components/agendas/AgendaCard";
 import Button from "@/app/_components/globals/Button";
 import Popup from "@/app/_components/globals/Popup";
@@ -117,7 +117,7 @@ const deleteAgenda = async (id:string) => {
 
     setNewAgendaOverlay(true);
   };
-  const Header = <h2 className="text-2xl">Agendas</h2>;
+  const Header = <h2 className="text-2xl">Painel de Agendas</h2>;
 
   const Body = (
     <div className="flex flex-col gap-2 w-full">
@@ -125,7 +125,7 @@ const deleteAgenda = async (id:string) => {
 
       {renderAgendaCards()}
 
-      {menuVisible && <FloatingMenu />}
+      {menuVisible && <NavigationMenu />}
 
       {newAgendaOverlay && (
         <Popup

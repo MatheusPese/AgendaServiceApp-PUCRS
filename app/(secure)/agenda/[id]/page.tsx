@@ -4,11 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, redirect } from 'next/navigation';
 
 // import componnents
-import Button             from "@/app/_components/globals/Button";
-import FloatingMenu       from "@/app/_components/globals/FloatingMenu";
-import PageTemplate       from "@/app/_components/globals/PageTemplate";
-import AppointmentCard    from "@/app/_components/agendas/agenda/AppointmentCard";
-import NewAppointmentCard from "@/app/_components/agendas/agenda/NewAppointmentCard";
+import {NavigationMenu, Button, PageTemplate, AppointmentCard, NewAppointmentCard} from "@/app/_components/";
 
 //import services
 import { useAgendaService, useAppointmentService } from "@/app/_services";
@@ -108,7 +104,7 @@ const openAppointment = (appointment:any) => {
       
       {renderAppointments()}
 
-      {menuVisible && <FloatingMenu />}
+      {menuVisible && <NavigationMenu />}
     
     </div>
   );

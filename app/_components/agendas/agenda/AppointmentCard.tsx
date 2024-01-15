@@ -34,4 +34,5 @@ const AppointmentCard: React.FC<AppointmentProps> = ({ timeDue, employee, client
   );
 };
 
+export { AppointmentCard}
 export default AppointmentCard;
