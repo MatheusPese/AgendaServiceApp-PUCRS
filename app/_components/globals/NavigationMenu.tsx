@@ -22,7 +22,7 @@ const NavigationMenu: React.FC = () => {
     return ( 
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-60 rounded-lg m-auto p-0 text-black flex-row items-center ">
         <button type="button" onClick={Menu1} className="flex p-10 text-xl font-bold">
-            Tela Inicial
+            Painel de Agendas
         </button>
         <button type="button" onClick={Menu2} className="flex p-10 text-xl font-bold">
             Perfil
