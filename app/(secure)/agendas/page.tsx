@@ -110,11 +110,10 @@ const deleteAgenda = async (id:string) => {
   };
 
   const MenuClick = () => {
-    setMenuVisible(!menuVisible);
+    if (menuVisible==false) setMenuVisible(true);
   };
 
   const ShowNewAgendaOverlay = () => {
-
     setNewAgendaOverlay(true);
   };
   const Header = <h2 className="text-2xl">Painel de Agendas</h2>;
@@ -125,7 +124,7 @@ const deleteAgenda = async (id:string) => {
 
       {renderAgendaCards()}
 
-      <NavigationMenu menuClosed={!menuVisible} />
+      <NavigationMenu setMenuVisible={setMenuVisible} menuVisible={menuVisible}/>
 
       {newAgendaOverlay && (
         <Popup

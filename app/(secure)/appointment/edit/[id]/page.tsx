@@ -51,7 +51,7 @@ export default function Home({params: {id}}:any) {
 
 
   const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
+    if (menuVisible==false) setMenuVisible(true);
   };
 
   const onReturn = () => {

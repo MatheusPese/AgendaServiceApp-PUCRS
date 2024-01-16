@@ -4,65 +4,75 @@ import React, { useRef, useEffect, useState } from "react";
 import { useUserService } from "../../_services";
 
 interface NavigationMenuProps {
-    menuClosed: boolean;
+    menuVisible: boolean;
+    setMenuVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NavigationMenu: React.FC<NavigationMenuProps> = ({ menuClosed }) => {
+const NavigationMenu: React.FC<NavigationMenuProps> = ({ menuVisible, setMenuVisible }) => {
     const userService = useUserService();
     const router = useRouter();
     const menuRef = useRef<HTMLDivElement | null>(null);
-    const [localMenuClosed, setLocalMenuClosed] = useState(false);
 
-    useEffect(() => {
-        setLocalMenuClosed(menuClosed);
-
-        const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !(menuRef.current as HTMLDivElement).contains(event.target as Node)) {
-                setLocalMenuClosed(true);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [menuRef, menuClosed]);
-
-    const Menu1 = () => {
+    const navigateToAgendas = () => {
         router.push('/agendas');
-        setLocalMenuClosed(true);
+        setMenuVisible(false);
     };
 
-    const Menu2 = () => {
+    const navigateToProfile = () => {
         router.push('/account/profile');
-        setLocalMenuClosed(true);
+        setMenuVisible(false);
     };
 
-    const Menu3 = async () => {
+    const logoutAndNavigate = async () => {
         await userService.logout();
-        setLocalMenuClosed(true);
+        setMenuVisible(false);
     };
 
-    if (localMenuClosed) {
-        return null; // Hide the menu content
-    }
+    const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        if (event.target === event.currentTarget) {
+            event.stopPropagation();
+            // Check if the click occurred on the overlay div
+            setMenuVisible(false);
+        }
+    };
 
     return (
-        <div
-            ref={menuRef}
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-60 rounded-lg m-auto p-0 text-black flex flex-col items-stretch"
-        >
-            <button type="button" onClick={Menu1} className="flex-grow p-10 text-xl font-bold justify-start items-start text-left">
-                Painel de Agendas
-            </button>
-            <button type="button" onClick={Menu2} className="flex-grow p-10 text-xl font-bold text-left">
-                Perfil
-            </button>
-            <button type="button" onClick={Menu3} className="flex-grow p-10 text-xl text-red-600 font-bold text-left">
-                Desconectar-se
-            </button>
-        </div>
+        <>
+            {menuVisible && (
+                <div
+                    className="fixed top-0 left-0 w-full h-full bg-[rgba(1,1,1,0.2)] z-50 backdrop-blur-[2px]"
+                    onClick={handleOverlayClick}
+                >
+                                <div
+                ref={menuRef}
+                className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-60 rounded-lg m-auto p-0 text-black flex flex-col items-stretch ${
+                    menuVisible ? "" : "invisible"
+                }`}
+            >
+                <button
+                    type="button"
+                    onClick={navigateToAgendas}
+                    className="flex-grow p-10 text-xl font-bold justify-start items-start text-left"
+                >
+                    Painel de Agendas
+                </button>
+                <button type="button" onClick={navigateToProfile} className="flex-grow p-10 text-xl font-bold text-left">
+                    Perfil
+                </button>
+                <button
+                    type="button"
+                    onClick={logoutAndNavigate}
+                    className="flex-grow p-10 text-xl text-red-600 font-bold text-left"
+                >
+                    Desconectar-se
+                </button>
+            </div>
+            
+                </div>
+            )}
+
+
+        </>
     );
 }
 

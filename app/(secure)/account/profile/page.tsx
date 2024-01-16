@@ -18,8 +18,7 @@ function Profile()  {
 
 
     const MenuClick = () => {
-        setMenuVisible(!menuVisible);
-    };
+        if (menuVisible==false) setMenuVisible(true);    };
     
     useEffect(() => {
         userService.getCurrent();
@@ -67,7 +66,7 @@ function Profile()  {
             </button>
         </div>)}
         
-                <NavigationMenu menuClosed={!menuVisible}/>
+                <NavigationMenu setMenuVisible={setMenuVisible} menuVisible={menuVisible}/>
         
         </>
     );

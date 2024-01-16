@@ -61,7 +61,7 @@ const openAppointment = (appointment:any) => {
   const [menuVisible, setMenuVisible] = useState(false);
   
   const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
+    if (menuVisible==false) setMenuVisible(true);
   };
   
 
@@ -104,7 +104,7 @@ const openAppointment = (appointment:any) => {
       
       {renderAppointments()}
 
-      <NavigationMenu menuClosed={!menuVisible}/>
+      <NavigationMenu setMenuVisible={setMenuVisible} menuVisible={menuVisible}/>
     
     </div>
   );
