@@ -13,9 +13,7 @@ const CredentialCard: React.FC<InfoCardProps> = ({ titulo, valor, onClickEdit })
         <div className="font-bold text-xs">{titulo}</div>
         <div>{valor}</div>
       </div>
-      <button onClick={onClickEdit}>
-        Editar
-      </button>
+      {/* TODO: add a way to edit user credentials */}
     </div>
   );
 };
