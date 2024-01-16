@@ -35,6 +35,10 @@ function Home() {
   if (user) {
       redirect('/agendas');
   } else {
-      return <p>loading... <span className="spinner-border spinner-border-sm me-1"></span></p>;
+      return (
+      <div className="flex items-center justify-center text-3xl h-screen">
+        <span className="spinner-border me-2"></span> Carregando... 
+      </div>
+      )
   }
 }

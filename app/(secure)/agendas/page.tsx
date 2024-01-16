@@ -125,7 +125,7 @@ const deleteAgenda = async (id:string) => {
 
       {renderAgendaCards()}
 
-      {menuVisible && <NavigationMenu />}
+      <NavigationMenu menuClosed={!menuVisible} />
 
       {newAgendaOverlay && (
         <Popup

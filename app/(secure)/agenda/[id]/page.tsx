@@ -104,7 +104,7 @@ const openAppointment = (appointment:any) => {
       
       {renderAppointments()}
 
-      {menuVisible && <NavigationMenu />}
+      <NavigationMenu menuClosed={!menuVisible}/>
     
     </div>
   );
