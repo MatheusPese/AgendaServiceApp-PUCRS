@@ -1,4 +1,4 @@
-#What is this for?
+# What is this for?
 
 This project was my Final Project for my postgraduate studies at PUCRS University as a FULLSTACK developer. Its primary objective was to demonstrate my learning in full-stack web development. It is a web application that serves as an MVP (Minimum Viable Product) for an appointment scheduling system tailored initially for a beauty salon but designed with flexibility to expand to other service-oriented businesses.
 
