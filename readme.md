@@ -1,3 +1,12 @@
+#What is this for?
+
+This project was my Final Project for my postgraduate studies at PUCRS University as a FULLSTACK developer. Its primary objective was to demonstrate my learning in full-stack web development. It is a web application that serves as an MVP (Minimum Viable Product) for an appointment scheduling system tailored initially for a beauty salon but designed with flexibility to expand to other service-oriented businesses.
+
+Using a stack that integrates MongoDB for database management, TypeScript for robust and type-safe development, GitHub Actions for continuous integration and deployment, Heroku for hosting, Docker for containerization, Jest for testing, Node.js for backend services, Tailwind CSS for responsive and streamlined UI, React for dynamic frontend interfaces, Figma for UX/UI planning and design, and other tools, the application embodies my proficiency as a full-stack developer.
+
+The core functionality allows users to schedule appointments for services, demonstrating features such as user authentication, appointment booking, and others. 
+
+
 # How to build and run the application
 
 
